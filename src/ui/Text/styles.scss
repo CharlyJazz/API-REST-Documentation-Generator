@@ -1,0 +1,26 @@
+h1, h2, p {
+  font-family: Roboto, Arial;
+  color: #3b3b3b;
+
+  > span {
+    transition: color .2s;
+  }
+}
+
+h1.Text_Title-Endpoint {
+  font-size: 30px;
+}
+
+h2.Text__Title-Method {
+  font-size: 22px;
+}
+
+p {
+  &.Text__Description-Method {
+    font-size: 16px;
+  }
+
+  &.Text__Description-Endpooint  {
+    font-size: 18px;
+  }
+}

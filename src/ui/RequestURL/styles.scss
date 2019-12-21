@@ -1,0 +1,20 @@
+.RequestURL {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ebebeb;
+  height: 50px;
+  padding: 0 20px;
+
+  > div {
+    display: inline-block;
+
+    &:nth-child(1) {
+      margin-right: 40px
+    }
+
+    > p {
+      font-family: Roboto, Arial;
+    }
+  }
+}

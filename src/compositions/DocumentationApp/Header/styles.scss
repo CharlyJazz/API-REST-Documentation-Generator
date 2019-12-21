@@ -1,0 +1,49 @@
+.Header {
+  height: 80px;
+  box-shadow: 0 3px 5px 0px #e2e2e2;
+  padding: 0 15px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+
+  > div {
+    &:nth-child(1) {
+      width: 100%;
+
+      > img {
+        height: 60px;
+        vertical-align: middle;
+      }
+    }
+
+    &:nth-child(2) {
+      > button {
+        background-color: unset;
+        border: none;
+
+        > div {
+          width: 35px;
+          height: 30px;
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-flow: column;
+          flex-flow: column;
+          -ms-flex-pack: distribute;
+          justify-content: space-around;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          cursor: pointer;
+
+          > div {
+            width: 100%;
+            height: 0.28rem;
+            background-color: #d4d4d4;
+            transition: all 0.3s;
+          }
+        }
+      }
+    }
+  }
+}

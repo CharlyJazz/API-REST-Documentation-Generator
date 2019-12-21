@@ -1,0 +1,31 @@
+.Navigation {
+  width: 300px;
+  border-right: 1px solid #d3d3d3;
+  height: calc(100vh - 140px);
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+
+    p {
+      padding: 25px;
+      cursor: pointer;
+
+      &:hover {
+        color: #868686;
+      }
+    }
+
+    li {
+      ul {
+        margin-bottom: 25px;
+        padding-left: 40px;
+
+        p {
+          padding: 0;
+          margin-bottom: 35px
+        }
+      }
+    }
+  }
+}
