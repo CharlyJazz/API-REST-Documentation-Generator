@@ -14,11 +14,11 @@ interface Props {
   description?: string;
   schema?: SchemaType[];
   methods?: MethodProps[];
-  ID_SECTION: string
+  ID_SECTION: string;
 }
 
 const Schema: React.FC<{ schema: SchemaType[] }> = ({ schema }) => {
-  const keys = Object.keys(schema[0].rules) || [];
+  const keys: string[] = Object.keys(schema[0].rules);
   const header_cols: string[] = ["name", ...keys];
   const rows: any[][] = [];
   for (let i = 0; i < schema.length; i++) {

@@ -8,9 +8,12 @@ import { Endpoint } from "../../../generateData";
 import { SearchContext } from "../../../providers/SearchProvider";
 import "./styles.scss";
 
+interface Props {
+  endpoints: Endpoint[];
+}
+
 // Side menu to render list of lists of methods of each endpoint
-const Navigation = (props: { endpoints: Endpoint[] }) => {
-  const { endpoints } = props;
+const Navigation: React.FC<Props> = ({endpoints}) => {
   const {
     dispatch,
     state: { section_id_active, sub_section_id_active }

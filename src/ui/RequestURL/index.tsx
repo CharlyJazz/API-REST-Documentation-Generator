@@ -26,7 +26,7 @@ const methodColor = (method: string) => {
 
 // This componente receive the endpoint url, method
 // User can copy the url
-const RequestURL = (props: Props) => {
+const RequestURL: React.FC<Props> = props => {
   const { method, url } = props;
   const {
     state: { urlBase }

@@ -14,7 +14,7 @@ export const TITLE_METHOD_SECTION = "TITLE_METHOD_SECTION";
 export const DESCRIPTION_METHOD_SECTION = "DESCRIPTION_METHOD_SECTION";
 
 // Text component to use in all text use cases
-const Text = (props: Props) => {
+const Text: React.FC<Props> = props => {
   const { children, type, onClick, style } = props;
 
   let extraProps: {
@@ -25,7 +25,7 @@ const Text = (props: Props) => {
   } = {};
 
   if (style) {
-    extraProps["style"] = style
+    extraProps["style"] = style;
   }
 
   if (onClick) {

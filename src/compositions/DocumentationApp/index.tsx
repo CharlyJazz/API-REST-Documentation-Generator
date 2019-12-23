@@ -6,11 +6,14 @@ import EndpointSection from "./EndpointSection";
 import { Endpoint } from "../../generateData";
 import { SearchContext } from "../../providers/SearchProvider";
 
+interface Props {
+  data: Endpoint[];
+}
+
 /* This component will assemble
    Footer, Header, EndpointSection
 */
-const DocumentationApp = (props: { data: Endpoint[] }) => {
-  const { data } = props;
+const DocumentationApp: React.FC<Props> = ({ data }) => {
   const {
     state: { section_id_active }
   } = useContext(SearchContext);

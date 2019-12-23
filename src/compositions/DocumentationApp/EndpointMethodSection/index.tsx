@@ -19,7 +19,7 @@ import "./styles.scss";
    4. Note text
    5. Query Params in Table
 */
-const EndpointMethodSection = (props: MethodProps) => {
+const EndpointMethodSection: React.FC<MethodProps> = props => {
   const { description, method, response, title, url, note, ID_SECTION } = props;
   const {
     state: { sub_section_id_active }
