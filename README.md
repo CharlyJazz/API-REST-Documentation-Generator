@@ -1,4 +1,4 @@
-# React application to create a ui from your JSON API REST schema
+# Generator of API REST Documentation
 
 - The point of this project is provide to the devs a structure and logical flow to create a REST API documentation without swagger or other tool. Why? I dont know. :star:. But you can use it instead install gems or packages to your backend project, Why? I dont know :star2:
 
@@ -16,8 +16,8 @@
 - If your json dont have this structure you can edit the `generateData()` function in `generateData.ts` and make sure the output satisfy the typescript interface `Endpoint`. This is a implementation of a strategy pattern to allow you use this project with any json structure of your api schema, not only a OpenAPI structure.
 
 ```JSON
-{
-  [
+[
+  {
     "title": "Food",
     "description": "Check food of a restaurant",
     "endpoint": "restaurant/:id_restaurant/food",
@@ -39,7 +39,7 @@
         "url": "restaurant/:id_restaurant/food",
         "response": {
           "body": {
-            "status" 200,
+            "status": "200",
             "payload": [
               {
                 "id": 2,
@@ -54,7 +54,8 @@
         }
       }
     ]
-  },
+  }
+],
 ```
 
 - In `src/config.ts` you can use Firebase for implement a Login form, you need create a .env file and set your application key REACT_APP_FIREBASE=KEY. You can turn off the login with the `withLogin` flag in `src/config.ts`.
@@ -73,3 +74,7 @@
 ## Project Status
 
 - This project is not finished. We going add tiny features like a search input.
+
+## Example:
+
+![Desktop](https://user-images.githubusercontent.com/12489333/71376044-0315a780-259f-11ea-95d1-c3d51368f777.png)
