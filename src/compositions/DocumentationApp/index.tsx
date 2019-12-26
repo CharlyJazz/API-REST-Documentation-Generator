@@ -52,7 +52,7 @@ const DocumentationApp: React.FC<Props> = ({ data }) => {
 
   return (
     <div>
-      <Header />
+      <Header {...{ data }} />
       <div style={{ display: "flex" }}>
         <Navigation endpoints={data} />
         {renderEndpointSection()}

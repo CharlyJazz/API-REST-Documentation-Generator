@@ -2,7 +2,6 @@ import React from "react";
 
 interface InitialState {
   text: string;
-  results: { index: string }[];
   section_id_active: string;
   sub_section_id_active: string;
 }
@@ -16,7 +15,6 @@ interface Action {
 
 const initialState: InitialState = {
   text: "",
-  results: [],
   section_id_active: "",
   sub_section_id_active: ""
 };
@@ -32,7 +30,12 @@ const reducer = (state: InitialState, action: Action) => {
     case "SET_ID_SUB_SECTION":
       return {
         ...state,
-        sub_section_id_active: action.payload.value,
+        sub_section_id_active: action.payload.value
+      };
+    case "SEARCH_TEXT":
+      return {
+        ...state,
+        text: action.payload.value
       };
     default:
       return state;

@@ -63,6 +63,6 @@ const getUserStrategy = () => {
   }
 };
 
-const withLogin = true;
+const withLogin = false;
 
 export { loginStrategy, logoutStrategy, getUserStrategy, withLogin };
