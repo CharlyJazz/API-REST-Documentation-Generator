@@ -2,16 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import endpoints from "./data/endpoints_long_data.json";
+import "./index.scss";
 import { ConfigurationProvider } from "./providers/ConfigurationProvider";
 import { SearchProvider } from "./providers/SearchProvider";
 import { UserProvider } from "./providers/UserProvider";
-import "./index.scss";
 
 ReactDOM.render(
   <ConfigurationProvider>
     <SearchProvider>
       <UserProvider>
-        <App />
+        <App endpoints={endpoints} />
       </UserProvider>
     </SearchProvider>
   </ConfigurationProvider>,

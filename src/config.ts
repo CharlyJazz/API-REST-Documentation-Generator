@@ -20,14 +20,14 @@ const loginStrategy = (email: string, password: string) => {
       if ("error" in res) {
         return false;
       } else {
-        const expirationDate: string = String(new Date(
-          new Date().getTime() + res.expiresIn * 1000
-        ));
+        const expirationDate: string = String(
+          new Date(new Date().getTime() + res.expiresIn * 1000)
+        );
         localStorage.setItem("token", res.idToken);
         localStorage.setItem("expirationDate", expirationDate);
         localStorage.setItem("userId", res.localId);
         localStorage.setItem("email", res.email);
-        return res
+        return res;
       }
     })
     .catch(err => {
