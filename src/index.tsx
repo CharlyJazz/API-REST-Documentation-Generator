@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import endpoints from "./data/endpoints_long_data.json";
+import endpoints from "./data/openapi3.json";
 import "./index.scss";
 import { ConfigurationProvider } from "./providers/ConfigurationProvider";
 import { SearchProvider } from "./providers/SearchProvider";

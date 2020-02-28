@@ -7,7 +7,7 @@ import DocumentationApp from "./compositions/DocumentationApp";
 import worker from "workerize-loader!./worker"; // eslint-disable-line import/no-webpack-loader-syntax
 
 interface Props {
-  endpoints: {}[];
+  endpoints: {}[] | {};
 }
 /*
  * If there are a user, a worker will set the unique id of each section
@@ -34,7 +34,7 @@ const App: React.FC<Props> = ({ endpoints }) => {
   } = useContext(UserContext);
   useEffect(() => {
     if (!withLogin || (withLogin && email)) {
-      workerInstance.generateEndpoints(endpoints);
+      workerInstance.generateEndpoints(endpoints, "oa3");
       setData([]);
     }
   }, [withLogin, email, endpoints]);
