@@ -10,6 +10,7 @@
     p {
       padding: 25px;
       cursor: pointer;
+      word-break: break-all;
 
       &:hover {
         color: #868686;
@@ -23,7 +24,7 @@
 
         p {
           padding: 0;
-          margin-bottom: 35px
+          margin-bottom: 35px;
         }
       }
     }
