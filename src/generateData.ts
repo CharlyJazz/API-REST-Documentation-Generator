@@ -6,10 +6,11 @@ export type SchemaType = {
 export interface MethodProps {
   description?: string;
   method: string;
-  response?: {};
+  response?: [];
   title: string;
   url: string;
   note?: string;
+  request?: {};
   ID_SECTION: string;
 }
 

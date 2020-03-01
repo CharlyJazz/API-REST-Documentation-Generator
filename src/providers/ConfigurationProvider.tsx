@@ -11,7 +11,7 @@ interface InitialState {
   logoutStrategy: () => void;
   getUserStrategy: () => any;
   withLogin: boolean;
-  urlBase: string
+  urlBase: string;
 }
 
 interface Action {
@@ -23,7 +23,7 @@ const initialState: InitialState = {
   logoutStrategy,
   getUserStrategy,
   withLogin,
-  urlBase: "https://app.slack.com"
+  urlBase: ""
 };
 
 const reducer = (state: InitialState, action: Action) => {

@@ -26,15 +26,13 @@ const DocumentationApp: React.FC<Props> = ({ data }) => {
         )[0];
 
         return (
-          <div style={{ width: "100%" }}>
-            <EndpointSection
-              title={findedEndpoint.title}
-              description={findedEndpoint.description}
-              schema={findedEndpoint.fields}
-              methods={findedEndpoint.methods}
-              ID_SECTION={findedEndpoint.ID_SECTION}
-            />
-          </div>
+          <EndpointSection
+            title={findedEndpoint.title}
+            description={findedEndpoint.description}
+            schema={findedEndpoint.fields}
+            methods={findedEndpoint.methods}
+            ID_SECTION={findedEndpoint.ID_SECTION}
+          />
         );
       } catch (error) {
         return null;

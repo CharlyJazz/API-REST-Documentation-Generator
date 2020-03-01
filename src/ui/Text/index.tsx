@@ -2,10 +2,11 @@ import React from "react";
 import "./styles.scss";
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode | string;
   type: string;
   onClick?(): any;
   style?: {};
+  render_breaklines?: boolean;
 }
 
 export const TITLE_ENDPOINT = "TITLE_ENDPOINT";
@@ -14,8 +15,20 @@ export const TITLE_METHOD_SECTION = "TITLE_METHOD_SECTION";
 export const DESCRIPTION_METHOD_SECTION = "DESCRIPTION_METHOD_SECTION";
 
 // Text component to use in all text use cases
+// Sometime we want render <br/> because the text have \n (OA3)
 const Text: React.FC<Props> = props => {
-  const { children, type, onClick, style } = props;
+  const { type, onClick, style, render_breaklines } = props;
+
+  let { children } = { ...props };
+
+  if (render_breaklines && children && typeof children === "string") {
+    children = children.split(`\n`).map((txt, i) => (
+      <Text type={type} key={i}>
+        {txt}
+        <br />
+      </Text>
+    ));
+  }
 
   let extraProps: {
     style?: {};

@@ -10,7 +10,8 @@
     display: inline-block;
 
     &:nth-child(1) {
-      margin-right: 40px
+      margin-right: 40px;
+      text-transform: uppercase;
     }
 
     > p {

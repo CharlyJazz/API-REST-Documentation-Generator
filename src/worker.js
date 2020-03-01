@@ -18,6 +18,22 @@ const StrategyOpenApi3 = endpoints => {
           obj.properties[array_of_attributes[i][0]] = resolve_ref_recursive(
             element.$ref
           );
+        } else if (
+          // No todos los schema tienen $ref directamente,
+          // a veces lo tienen adentro de items
+          // "schema": {
+          //   "title": "Response Read Contacts Auth V0 0 Contacts  Get",
+          //   "type": "array",
+          //   "items": { "$ref": "#/components/schemas/ContactRead" }
+          // }
+          "type" in element &&
+          element.type === "array" &&
+          "items" in element &&
+          "$ref" in element.items
+        ) {
+          obj.properties[array_of_attributes[i][0]].items = [
+            resolve_ref_recursive(element.items.$ref)
+          ];
         }
       }
     }
@@ -30,6 +46,31 @@ const StrategyOpenApi3 = endpoints => {
       content_type: content_entries[0][0],
       body: resolve_ref_recursive(content_entries[0][1].schema.$ref)
     };
+  };
+
+  const resolveResponsesBodyOpenApi3 = responses_data => {
+    const response_entries = Object.entries(responses_data);
+    return response_entries.map(n => {
+      const optional_content = {};
+      if ("content" in n[1]) {
+        const content_entries = Object.entries(n[1].content);
+        optional_content.content_type = content_entries[0][0];
+        if ("$ref" in content_entries[0][1].schema) {
+          optional_content.body = resolve_ref_recursive(
+            content_entries[0][1].schema.$ref
+          );
+        } else if ("items" in content_entries[0][1].schema) {
+          optional_content.body = [
+            resolve_ref_recursive(content_entries[0][1].schema.items.$ref)
+          ];
+        }
+      }
+      return {
+        http_status: n[0],
+        description: n[1].description,
+        ...optional_content
+      };
+    });
   };
 
   const output = [];
@@ -47,7 +88,8 @@ const StrategyOpenApi3 = endpoints => {
       description: m[1].description,
       method: m[0],
       url: url,
-      response: {},
+      response:
+        "responses" in m[1] ? resolveResponsesBodyOpenApi3(m[1].responses) : [],
       request:
         "requestBody" in m[1]
           ? resolveRequestBodyOpenApi3(m[1].requestBody)
