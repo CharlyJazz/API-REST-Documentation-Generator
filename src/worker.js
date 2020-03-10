@@ -78,25 +78,32 @@ const StrategyOpenApi3 = endpoints => {
 
   for (let i = 0; i < entries_path.length; i++) {
     const [url, methods] = entries_path[i];
-    const item = {};
-    item["ID_SECTION"] = `${i + 1}_${url}`;
-    item.title = url;
-    item.description = "";
-    item.fields = [];
-    item.methods = Object.entries(methods).map(m => ({
-      title: m[1].summary,
-      description: m[1].description,
-      method: m[0],
-      url: url,
-      response:
-        "responses" in m[1] ? resolveResponsesBodyOpenApi3(m[1].responses) : [],
-      request:
-        "requestBody" in m[1]
-          ? resolveRequestBodyOpenApi3(m[1].requestBody)
-          : {},
-      ID_SECTION: m[1].operationId
-    }));
-    output.push(item);
+
+    Object.entries(methods).map((m, j) => {
+      const item = {};
+      item["ID_SECTION"] = `${j + 1}_${url}`;
+      item.title = m[1].summary;
+      item.description = m[1].description;
+      item.fields = [];
+      item.methods = [
+        {
+          title: "",
+          description: "",
+          method: m[0],
+          url: url,
+          response:
+            "responses" in m[1]
+              ? resolveResponsesBodyOpenApi3(m[1].responses)
+              : [],
+          request:
+            "requestBody" in m[1]
+              ? resolveRequestBodyOpenApi3(m[1].requestBody)
+              : {},
+          ID_SECTION: m[1].operationId
+        }
+      ];
+      output.push(item);
+    });
   }
 
   return output;
