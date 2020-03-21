@@ -2,11 +2,11 @@ import React, { useRef, useContext } from "react";
 import Results from "../../../ui/Results";
 import "./styles.scss";
 import { SearchContext } from "../../../providers/SearchProvider";
-import { Endpoint } from "../../../generateData";
+import { Endpoint } from "../../../types";
 
 // This component will be use the the logo
 // setted in the provider, the colors and brand name
-const Header: React.FC<{ data?: Endpoint[] }> = ({data}) => {
+const Header: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
   let timeout: any = null;
 
   const refInput: any = useRef<HTMLInputElement>(null);
@@ -34,7 +34,7 @@ const Header: React.FC<{ data?: Endpoint[] }> = ({data}) => {
         <form>
           <input onKeyUp={handleInput} ref={refInput} />
           <div className="abs-results">
-            <Results {...{data}}/>
+            <Results {...{ data }} />
           </div>
         </form>
         <button>

@@ -73,41 +73,46 @@ const StrategyOpenApi3 = endpoints => {
     });
   };
 
-  const output = [];
+  const tags = {};
   const entries_path = Object.entries(endpoints.paths);
 
   for (let i = 0; i < entries_path.length; i++) {
     const [url, methods] = entries_path[i];
-
-    Object.entries(methods).map((m, j) => {
-      const item = {};
-      item["ID_SECTION"] = `${j + 1}_${url}`;
-      item.title = m[1].summary;
-      item.description = m[1].description;
-      item.fields = [];
-      item.methods = [
-        {
-          title: "",
-          description: "",
-          method: m[0],
+    const method_entries = Object.entries(methods);
+    for (let j = 0; j < method_entries.length; j++) {
+      const [method, details] = method_entries[j];
+      for (let n = 0; n < details.tags.length; n++) {
+        const tag = details.tags[n];
+        if (!(tag in tags)) {
+          tags[tag] = {
+            title: tag,
+            description: "",
+            ID_SECTION: `${j + 1}_${url}`,
+            methods: []
+          };
+        }
+        tags[tag].methods.push({
+          title: details.summary,
+          description: details.description,
+          method: method,
           url: url,
           response:
-            "responses" in m[1]
-              ? resolveResponsesBodyOpenApi3(m[1].responses)
+            "responses" in details
+              ? resolveResponsesBodyOpenApi3(details.responses)
               : [],
           request:
-            "requestBody" in m[1]
-              ? resolveRequestBodyOpenApi3(m[1].requestBody)
+            "requestBody" in details
+              ? resolveRequestBodyOpenApi3(details.requestBody)
               : {},
-          ID_SECTION: m[1].operationId
-        }
-      ];
-      output.push(item);
-    });
+          ID_SECTION: details.operationId
+        });
+      }
+    }
   }
 
-  return output;
+  return Object.values(tags);
 };
+
 const StrategyDefault = endpoints => {
   const output = [];
   for (let i = 0; i < endpoints.length; i++) {

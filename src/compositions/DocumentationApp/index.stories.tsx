@@ -1,7 +1,7 @@
 import React from "react";
 import DocumentationApp from ".";
 import { SearchProvider } from "../../providers/SearchProvider";
-import generateData from "../../generateData";
+import generateData from "../../types";
 import data from "../../data/endpoints.json";
 
 export default {

@@ -1,6 +1,6 @@
 import React from "react";
 import Navigation from ".";
-import generateData, { Endpoint } from "../../../generateData";
+import generateData, { Endpoint } from "../../../types";
 import data from "../../../data/endpoints.json";
 
 export default {

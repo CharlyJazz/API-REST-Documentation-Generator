@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import RequestURL from "../../../ui/RequestURL";
-import { MethodProps } from "../../../generateData";
+import { MethodProps } from "../../../types";
 import Text, {
   TITLE_METHOD_SECTION,
   DESCRIPTION_METHOD_SECTION

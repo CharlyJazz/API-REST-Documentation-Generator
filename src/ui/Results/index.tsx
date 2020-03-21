@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../providers/SearchProvider";
-import { Endpoint } from "../../generateData";
+import { Endpoint } from "../../types";
 import Text, { DESCRIPTION_ENDPOINT } from "../Text";
 import "./styles.scss";
 

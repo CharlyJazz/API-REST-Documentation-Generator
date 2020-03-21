@@ -6,7 +6,7 @@ import Text, {
 } from "../../../ui/Text";
 import Table from "../../../ui/Table";
 import EndpointMethodSection from "../EndpointMethodSection";
-import { MethodProps, SchemaType } from "../../../generateData";
+import { MethodProps, SchemaType } from "../../../types";
 import "./styles.scss";
 import Spacing from "../../../ui/Spacing";
 

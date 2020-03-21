@@ -3,7 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 import EndpointSection from "./EndpointSection";
-import { Endpoint } from "../../generateData";
+import { Endpoint } from "../../types";
 import { SearchContext } from "../../providers/SearchProvider";
 
 interface Props {

@@ -4,7 +4,7 @@ import Text, {
   DESCRIPTION_METHOD_SECTION,
   DESCRIPTION_ENDPOINT
 } from "../../../ui/Text";
-import { Endpoint } from "../../../generateData";
+import { Endpoint } from "../../../types";
 import { SearchContext } from "../../../providers/SearchProvider";
 import "./styles.scss";
 
@@ -13,7 +13,7 @@ interface Props {
 }
 
 // Side menu to render list of lists of methods of each endpoint
-const Navigation: React.FC<Props> = ({endpoints}) => {
+const Navigation: React.FC<Props> = ({ endpoints }) => {
   const {
     dispatch,
     state: { section_id_active, sub_section_id_active }
