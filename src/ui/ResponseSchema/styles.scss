@@ -1,0 +1,69 @@
+.Schema {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #d0d0d0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
+}
+
+.Schema .Schema__name {
+	font-weight: bold;
+	font-size: 18px;
+	margin-right: 6px;
+}
+
+.Schema .Schema__brace {
+	font-size: 18px;
+	color: gray;
+}
+
+.Schema ul {
+  list-style: none;
+  margin: 0;
+  padding: 18px 0px 0px 0px;
+}
+
+.Property {
+  padding-left: 18px;
+  padding-bottom: 12px;
+  display: flex;
+}
+
+.Property .Property__key {
+  width: 50%;
+}
+
+.Property .Property__type {
+  color: blue;
+  font-weight: bold;
+}
+
+.Property .Property__required {
+  color: red;
+  font-weight: bold;
+}
+
+.Property .Property__values {
+  width: calc(50% - 18px);
+  margin-left: 18px;
+}
+
+.Property .Property__example {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.Property .Property__description {
+  font-size: 12px;
+  margin: 6px 0px;
+}
+
+.ToggleSchema .ToggleSchema__title {
+  font-size: 16px;
+  margin-right: 6px;
+  font-weight: bold;
+}
+
+.ToggleSchema .ToggleSchema__brace {
+  color: gray;
+}

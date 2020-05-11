@@ -1,13 +1,14 @@
 import React from "react";
 import CodeExample from "../CodeExample";
 import Text, { DESCRIPTION_METHOD_SECTION } from "../Text";
+import ResponseSchema from "../ResponseSchema/ResponseSchema";
 
 interface Props {
   response?: {
     http_status?: string;
     description?: string;
     content_type?: string;
-    body?: string;
+    body?: object;
   }[];
 }
 
@@ -25,7 +26,11 @@ const Response: React.FC<Props> = ({ response }) => {
             <Text type={DESCRIPTION_METHOD_SECTION}>
               Content Type: {n.content_type}
             </Text>
-            <CodeExample code={JSON.stringify(n.body, null, 2)} />
+            <br />
+            {/* <CodeExample code={JSON.stringify(n.body, null, 2)} /> */}
+            {n.body &&
+              <ResponseSchema data={n.body || {}} />
+            }
           </div>
         );
       })}
