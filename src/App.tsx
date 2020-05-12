@@ -17,15 +17,7 @@ interface Props {
  */
 const App: React.FC<Props> = ({ endpoints }) => {
   const workerInstance = worker();
-  workerInstance.addEventListener("message", message => {
-    if (message.data.endpoint_message) {
-      if (process.env.NODE_ENV === "development") {
-        console.log("New Message: ", message.data);
-      }
-      setData(message.data.endpoints);
-    }
-  });
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const {
     state: { withLogin }
   } = useContext(ConfigurationContext);
@@ -34,8 +26,15 @@ const App: React.FC<Props> = ({ endpoints }) => {
   } = useContext(UserContext);
   useEffect(() => {
     if (!withLogin || (withLogin && email)) {
+      workerInstance.addEventListener("message", message => {
+        if (message.data.endpoint_message) {
+          if (process.env.NODE_ENV === "development") {
+            console.log("New Message: ", message.data);
+          }
+          setData(message.data.endpoints);
+        }
+      });
       workerInstance.generateEndpoints(endpoints, "oa3");
-      setData(undefined);
     }
   }, [withLogin, email, endpoints]);
 
@@ -43,7 +42,7 @@ const App: React.FC<Props> = ({ endpoints }) => {
     return <Login />;
   }
 
-  return <DocumentationApp data={data || []} />;
+  return <DocumentationApp data={data} />;
 };
 
 export default App;
