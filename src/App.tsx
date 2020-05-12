@@ -35,7 +35,7 @@ const App: React.FC<Props> = ({ endpoints }) => {
   useEffect(() => {
     if (!withLogin || (withLogin && email)) {
       workerInstance.generateEndpoints(endpoints, "oa3");
-      setData([]);
+      setData(undefined);
     }
   }, [withLogin, email, endpoints]);
 
@@ -43,7 +43,7 @@ const App: React.FC<Props> = ({ endpoints }) => {
     return <Login />;
   }
 
-  return <DocumentationApp data={data} />;
+  return <DocumentationApp data={data || []} />;
 };
 
 export default App;
