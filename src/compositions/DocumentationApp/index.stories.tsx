@@ -1,8 +1,8 @@
 import React from "react";
 import DocumentationApp from ".";
-import { SearchProvider } from "../../providers/SearchProvider";
-import generateData from "../../generateData";
 import data from "../../data/endpoints.json";
+import generateData from "../../mocks/generateData";
+import { SearchProvider } from "../../providers/SearchProvider";
 
 export default {
   title: "Documentation App",

@@ -1,25 +1,4 @@
-export type SchemaType = {
-  field: string;
-  rules: {};
-};
-
-export interface MethodProps {
-  description?: string;
-  method: string;
-  response?: {};
-  title: string;
-  url: string;
-  note?: string;
-  ID_SECTION: string;
-}
-
-export interface Endpoint {
-  title?: string;
-  description?: string;
-  ID_SECTION: string;
-  methods?: MethodProps[];
-  fields?: SchemaType[];
-}
+import { Endpoint } from '../types'
 
 const generateData = (endpoints: any): Endpoint[] => {
   for (let i = 0; i < endpoints.length; i++) {
@@ -32,5 +11,6 @@ const generateData = (endpoints: any): Endpoint[] => {
   }
   return endpoints;
 };
+
 
 export default generateData;

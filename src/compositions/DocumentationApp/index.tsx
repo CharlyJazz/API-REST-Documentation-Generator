@@ -3,7 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 import EndpointSection from "./EndpointSection";
-import { Endpoint } from "../../generateData";
+import { Endpoint } from "../../types";
 import { SearchContext } from "../../providers/SearchProvider";
 
 interface Props {
@@ -17,7 +17,6 @@ const DocumentationApp: React.FC<Props> = ({ data }) => {
   const {
     state: { section_id_active }
   } = useContext(SearchContext);
-
   const renderEndpointSection = () => {
     if (section_id_active) {
       try {
@@ -26,15 +25,13 @@ const DocumentationApp: React.FC<Props> = ({ data }) => {
         )[0];
 
         return (
-          <div style={{ width: "100%" }}>
-            <EndpointSection
-              title={findedEndpoint.title}
-              description={findedEndpoint.description}
-              schema={findedEndpoint.fields}
-              methods={findedEndpoint.methods}
-              ID_SECTION={findedEndpoint.ID_SECTION}
-            />
-          </div>
+          <EndpointSection
+            title={findedEndpoint.title}
+            description={findedEndpoint.description}
+            schema={findedEndpoint.fields}
+            methods={findedEndpoint.methods}
+            ID_SECTION={findedEndpoint.ID_SECTION}
+          />
         );
       } catch (error) {
         return null;

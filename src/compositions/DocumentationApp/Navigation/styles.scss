@@ -1,7 +1,8 @@
 .Navigation {
-  width: 300px;
+  width: 250px;
   border-right: 1px solid #d3d3d3;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 160px);
+  margin-top: 20px;
 
   ul {
     list-style-type: none;
@@ -10,6 +11,7 @@
     p {
       padding: 25px;
       cursor: pointer;
+      word-break: break-all;
 
       &:hover {
         color: #868686;
@@ -23,7 +25,7 @@
 
         p {
           padding: 0;
-          margin-bottom: 35px
+          margin-bottom: 35px;
         }
       }
     }

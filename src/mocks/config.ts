@@ -1,3 +1,5 @@
+import { SpecificationsAllowed } from "../types";
+
 const loginStrategy = (email: string, password: string) => {
   return fetch(
     `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${process.env.REACT_APP_FIREBASE}`,
@@ -63,6 +65,32 @@ const getUserStrategy = () => {
   }
 };
 
-const withLogin = false;
+const withLogin = !false;
 
-export { loginStrategy, logoutStrategy, getUserStrategy, withLogin };
+const urlBase = 'https://yourfreshapi.com'
+
+const endpoint_url = 'http://localhost:3000/data/openapi3.json'
+
+const specification: SpecificationsAllowed = 'oa3'
+
+const footer = {
+  enable: !true,
+  text: 'asd My footer xdddd'
+}
+
+const header = {
+  enable: !true,
+  logo_url: 'https://baller-documentation.firebaseapp.com/static/media/logo.46eb94ae.png'
+}
+
+export default {
+  loginStrategy,
+  logoutStrategy,
+  getUserStrategy,
+  withLogin,
+  urlBase,
+  endpoint_url,
+  specification,
+  footer,
+  header
+};
