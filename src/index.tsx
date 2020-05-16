@@ -1,25 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import { ConfigurationProvider } from "./providers/ConfigurationProvider";
-import { SearchProvider } from "./providers/SearchProvider";
-import { UserProvider } from "./providers/UserProvider";
-import endpoints from "./data/openapi3.json";
-import "./index.scss";
+import Bootstrap from "./Bootstrap"
+import config from "./mocks/config"
 
-ReactDOM.render(
-  <ConfigurationProvider>
-    <SearchProvider>
-      <UserProvider>
-        <App endpoints={endpoints} />
-      </UserProvider>
-    </SearchProvider>
-  </ConfigurationProvider>,
-  document.getElementById("root")
-);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Test the Boostrap function.
+
+
+Bootstrap(config)

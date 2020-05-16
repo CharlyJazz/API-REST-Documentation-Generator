@@ -3,6 +3,8 @@ export type SchemaType = {
   rules: {};
 };
 
+export type SpecificationsAllowed = 'oa3' | 'default'
+
 export interface MethodProps {
   description?: string;
   method: string;
@@ -22,16 +24,27 @@ export interface Endpoint {
   fields?: SchemaType[];
 }
 
-const generateData = (endpoints: any): Endpoint[] => {
-  for (let i = 0; i < endpoints.length; i++) {
-    const element = endpoints[i];
-    element["ID_SECTION"] = `${i + 1}_${element.endpoint}`;
-    for (let j = 0; j < element.methods.length; j++) {
-      const sub_element = element.methods[j];
-      sub_element["ID_SECTION"] = `${i + 1}_${j + 1}_${element.endpoint}`;
-    }
-  }
-  return endpoints;
-};
+export interface Action {
+  type: string;
+  payload: any
+}
 
-export default generateData;
+
+export interface Config {
+  loginStrategy: (email: string, password: string) => any;
+  logoutStrategy: () => void;
+  getUserStrategy: () => any;
+  withLogin: boolean;
+  urlBase: string;
+  endpoint_url: string;
+  endpoints?: any;
+  specification: SpecificationsAllowed;
+  footer: {
+    enable: boolean;
+    text: string;
+  };
+  header: {
+    enable: boolean;
+    logo_url: string
+  }
+}

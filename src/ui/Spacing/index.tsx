@@ -1,6 +1,6 @@
 import React from "react";
 
-const Spacing: React.FC<{ px: number }> = ({ px }) => (
+const Spacing: React.FC<{ px?: number }> = ({ px }) => (
   <div style={{ height: px }} />
 );
 

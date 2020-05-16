@@ -7,8 +7,8 @@ import Text, {
 import Table from "../../../ui/Table";
 import EndpointMethodSection from "../EndpointMethodSection";
 import { MethodProps, SchemaType } from "../../../types";
-import "./styles.scss";
 import Spacing from "../../../ui/Spacing";
+import "./styles.scss";
 
 interface Props {
   title?: string;
@@ -40,26 +40,24 @@ const EndpointSection: React.FC<Props> = props => {
         <Text type={TITLE_ENDPOINT}>
           <span style={{ textTransform: "capitalize" }}>{title}</span>
         </Text>
-        <Spacing px={20} />
+        <Spacing />
         <Text type={DESCRIPTION_ENDPOINT}>{description}</Text>
       </div>
-      <Spacing px={80} />
+      <Spacing />
       {schema && schema.length ? (
         <>
           <Text type={TITLE_METHOD_SECTION}>Schema</Text>
-          <Spacing px={40} />
+          <Spacing />
           <Schema {...{ schema }} />
-          <Spacing px={80} />
+          <Spacing />
         </>
       ) : null}
-
       {methods
         ? methods.map((method: MethodProps) => (
-            <div key={method.ID_SECTION}>
-              <EndpointMethodSection {...method} />
-              <Spacing px={80} />
-            </div>
-          ))
+          <div key={method.ID_SECTION}>
+            <EndpointMethodSection {...method} />
+          </div>
+        ))
         : null}
     </section>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 import Navigation from ".";
-import generateData, { Endpoint } from "../../../types";
+import { Endpoint } from "../../../types";
 import data from "../../../data/endpoints.json";
+import generateData from "../../../mocks/generateData";
 
 export default {
   title: "Navigation",

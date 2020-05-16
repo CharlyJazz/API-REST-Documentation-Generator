@@ -1,13 +1,16 @@
 import React, { useContext, useState, useEffect } from "react";
-import { ConfigurationContext } from "./providers/ConfigurationProvider";
-import Login from "./ui/Login";
-import { UserContext } from "./providers/UserProvider";
-import DocumentationApp from "./compositions/DocumentationApp";
+import { ConfigurationContext } from "../../providers/ConfigurationProvider";
+import { UserContext } from "../../providers/UserProvider";
+import DocumentationApp from "../../compositions/DocumentationApp";
+import { SpecificationsAllowed } from "../../types";
+import Login from "../../ui/Login";
+
 // @ts-ignore
-import worker from "workerize-loader!./worker"; // eslint-disable-line import/no-webpack-loader-syntax
+import worker from "workerize-loader!../../worker"; // eslint-disable-line import/no-webpack-loader-syntax
 
 interface Props {
   endpoints: {}[] | {};
+  specification: SpecificationsAllowed
 }
 /*
  * If there are a user, a worker will set the unique id of each section
@@ -15,7 +18,7 @@ interface Props {
  * This is useful for +1000 items in array, to avoid
  * White screen waiting por seconds
  */
-const App: React.FC<Props> = ({ endpoints }) => {
+const App: React.FC<Props> = ({ endpoints, specification }) => {
   const workerInstance = worker();
   const [data, setData] = useState([]);
   const {
@@ -34,7 +37,7 @@ const App: React.FC<Props> = ({ endpoints }) => {
           setData(message.data.endpoints);
         }
       });
-      workerInstance.generateEndpoints(endpoints, "oa3");
+      workerInstance.generateEndpoints(endpoints, specification);
     }
   }, [withLogin, email, endpoints]);
 

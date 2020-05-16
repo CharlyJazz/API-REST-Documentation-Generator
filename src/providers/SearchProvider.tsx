@@ -1,16 +1,10 @@
 import React from "react";
+import { Action } from "../types";
 
 interface InitialState {
   text: string;
   section_id_active: string;
   sub_section_id_active: string;
-}
-
-interface Action {
-  type: string;
-  payload: {
-    value: string;
-  };
 }
 
 const initialState: InitialState = {
@@ -47,7 +41,7 @@ const SearchContext = React.createContext<{
   dispatch: React.Dispatch<Action>;
 }>({
   state: initialState,
-  dispatch: () => {}
+  dispatch: () => { }
 });
 
 const useSearch = () => {

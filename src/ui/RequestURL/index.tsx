@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ConfigurationContext } from "../../providers/ConfigurationProvider";
 import "./styles.scss";
+import Spacing from "../Spacing";
 
 interface Props {
   method: string;
@@ -32,14 +33,17 @@ const RequestURL: React.FC<Props> = props => {
     state: { urlBase }
   } = useContext(ConfigurationContext);
   return (
-    <div className="RequestURL">
-      <div className={`RequestURL__method method`}>
-        <p style={{ color: methodColor(method.toLowerCase()) }}>{method}</p>
+    <>
+      <Spacing />
+      <div className="RequestURL">
+        <div className={`RequestURL__method method`}>
+          <p style={{ color: methodColor(method.toLowerCase()) }}>{method}</p>
+        </div>
+        <div className="RequestURL__url">
+          <p>{`${urlBase}${url}`}</p>
+        </div>
       </div>
-      <div className="RequestURL__url">
-        <p>{`${urlBase}${url}`}</p>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -25,7 +25,7 @@ interface PropertyProps {
   isRequired: boolean;
 };
 
-const Property:React.FC<PropertyProps> = ({ name, property, isRequired }) => {
+const Property: React.FC<PropertyProps> = ({ name, property, isRequired }) => {
   return (
     <li className="Property">
       <div className="Property__key">
@@ -33,23 +33,23 @@ const Property:React.FC<PropertyProps> = ({ name, property, isRequired }) => {
         {isRequired && <span className="Property__required">*</span>}
       </div>
       <div className="Property__values">
-        {property.schema ? (
-          <ToggleSchema schema={property.schema} />
+        {property.properties ? (
+          <ToggleSchema schema={property} />
         ) : (
-          <div>
-            <div className="Property__type">{property.type}</div>
-            {property.description ? (
-              <div className="Property__description">
-                {property.description}
-              </div>
-            ) : null}
-            {property.example ? (
-              <div className="Property__example">
-                 Example: {property.example}
-              </div>
-            ) : null}
-          </div>
-        )}
+            <div>
+              <div className="Property__type">{property.type}</div>
+              {property.description ? (
+                <div className="Property__description">
+                  {property.description}
+                </div>
+              ) : null}
+              {property.example ? (
+                <div className="Property__example">
+                  Example: {property.example}
+                </div>
+              ) : null}
+            </div>
+          )}
       </div>
     </li>
   );
@@ -60,26 +60,53 @@ interface SchemaProps {
   onlyProps?: boolean;
 };
 
-const ResponseSchema:React.FC<SchemaProps> = ({ data, onlyProps }) => {
-	return (
-	  <div className="Schema">
-      {!onlyProps && <span className="Schema__name">{data.title}</span>}
-			<span className="Schema__brace">{'{'}</span>
-			<ul>
-				{Object.keys(data.properties).map((key) => {
-          const property = data.properties[key];
+const ResponseSchema: React.FC<SchemaProps> = ({ data, onlyProps }) => {
+  if (!data) {
+    return (
+      <div className="Schema">
+        <span className="Schema__name">No response example</span>
+      </div>
+    )
+  } else if (Array.isArray(data)) {
+    return (
+      <div className="Schema">
+        {!onlyProps && <span className="Schema__name">{data[0].title}</span>}
+        <span className="Schema__brace">{'[{'}</span>
+        <ul>
+          {Object.keys(data[0].properties).map((key) => {
+            const property = data[0].properties[key];
 
-          return <Property
-            key={key}
-            name={key}
-            property={property}
-            isRequired={data.required ? data.required.indexOf(key) !== -1 : false}
-          />;
-        })}
-			</ul>
-      <span className="Schema__brace">{'}'}</span>
-		</div>
-	);
+            return <Property
+              key={key}
+              name={key}
+              property={property}
+              isRequired={data[0].required ? data[0].required.indexOf(key) !== -1 : false}
+            />;
+          })}
+        </ul>
+        <span className="Schema__brace">{'}...]'}</span>
+      </div>)
+  } else {
+    return (
+      <div className="Schema">
+        {!onlyProps && <span className="Schema__name">{data.title}</span>}
+        <span className="Schema__brace">{'{'}</span>
+        <ul>
+          {Object.keys(data.properties).map((key) => {
+            const property = data.properties[key];
+
+            return <Property
+              key={key}
+              name={key}
+              property={property}
+              isRequired={data.required ? data.required.indexOf(key) !== -1 : false}
+            />;
+          })}
+        </ul>
+        <span className="Schema__brace">{'}'}</span>
+      </div>
+    )
+  }
 };
 
 export default ResponseSchema;

@@ -17,7 +17,6 @@ const DocumentationApp: React.FC<Props> = ({ data }) => {
   const {
     state: { section_id_active }
   } = useContext(SearchContext);
-
   const renderEndpointSection = () => {
     if (section_id_active) {
       try {

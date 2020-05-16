@@ -1,8 +1,9 @@
 import React, { useRef, useContext } from "react";
 import Results from "../../../ui/Results";
-import "./styles.scss";
 import { SearchContext } from "../../../providers/SearchProvider";
 import { Endpoint } from "../../../types";
+import { ConfigurationContext } from "../../../providers/ConfigurationProvider";
+import "./styles.scss";
 
 // This component will be use the the logo
 // setted in the provider, the colors and brand name
@@ -11,10 +12,13 @@ const Header: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
 
   const refInput: any = useRef<HTMLInputElement>(null);
   const { dispatch } = useContext(SearchContext);
+  const {
+    state: { header: { logo_url, enable } }
+  } = useContext(ConfigurationContext);
 
   const handleInput = () => {
     clearTimeout(timeout);
-    timeout = setTimeout(function() {
+    timeout = setTimeout(function () {
       dispatch({
         type: "SEARCH_TEXT",
         payload: { value: refInput.current.value }
@@ -22,12 +26,12 @@ const Header: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
     }, 500);
   };
 
-  return (
+  return enable ? (
     <header className="Header">
       <div>
         <img
-          src="https://baller-documentation.firebaseapp.com/static/media/logo.46eb94ae.png"
-          alt="logo"
+          src={logo_url}
+          alt="Rest Documentation Logo"
         />
       </div>
       <div>
@@ -46,7 +50,7 @@ const Header: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
         </button>
       </div>
     </header>
-  );
+  ) : null;
 };
 
 export default Header;

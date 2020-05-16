@@ -49,17 +49,13 @@ const EndpointMethodSection: React.FC<MethodProps> = props => {
           {title}
         </span>
       </Text>
-      <Spacing px={40} />
+      <Spacing />
       <Text render_breaklines type={DESCRIPTION_METHOD_SECTION}>
         {description}
       </Text>
-      <Spacing px={40} />
       <RequestURL {...{ method, url }} />
-      <Spacing px={40} />
       <Request {...{ request }} />
-      <Spacing px={40} />
       <Response {...{ response }} />
-      <Spacing px={40} />
       <ImportantNote {...{ note }} />
     </div>
   );
