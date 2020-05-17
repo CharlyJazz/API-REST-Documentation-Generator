@@ -70,7 +70,6 @@ const ResponseSchema: React.FC<SchemaProps> = ({ data, onlyProps }) => {
   } else if (Array.isArray(data)) {
     return (
       <div className="Schema">
-        {!onlyProps && <span className="Schema__name">{data[0].title}</span>}
         <span className="Schema__brace">{'[{'}</span>
         <ul>
           {Object.keys(data[0].properties).map((key) => {
@@ -89,7 +88,6 @@ const ResponseSchema: React.FC<SchemaProps> = ({ data, onlyProps }) => {
   } else {
     return (
       <div className="Schema">
-        {!onlyProps && <span className="Schema__name">{data.title}</span>}
         <span className="Schema__brace">{'{'}</span>
         <ul>
           {Object.keys(data.properties).map((key) => {

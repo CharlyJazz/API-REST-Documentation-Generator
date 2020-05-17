@@ -74,12 +74,12 @@ const endpoint_url = 'http://localhost:3000/data/openapi3.json'
 const specification: SpecificationsAllowed = 'oa3'
 
 const footer = {
-  enable: !true,
+  enable: true,
   text: 'asd My footer xdddd'
 }
 
 const header = {
-  enable: !true,
+  enable: true,
   logo_url: 'https://baller-documentation.firebaseapp.com/static/media/logo.46eb94ae.png'
 }
 

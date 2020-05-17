@@ -50,7 +50,7 @@ const DocumentationApp: React.FC<Props> = ({ data }) => {
   return (
     <div>
       <Header {...{ data }} />
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", height: `calc(100vh - 145px)` }}>
         <Navigation endpoints={data} />
         {renderEndpointSection()}
       </div>

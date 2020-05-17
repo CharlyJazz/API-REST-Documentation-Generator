@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import VirtualList from "react-tiny-virtual-list";
 import Text, {
-  DESCRIPTION_METHOD_SECTION,
-  DESCRIPTION_ENDPOINT
+  TEXT_SMALL,
 } from "../../../ui/Text";
 import { Endpoint } from "../../../types";
 import { SearchContext } from "../../../providers/SearchProvider";
@@ -34,7 +33,7 @@ const Navigation: React.FC<Props> = ({ endpoints }) => {
               Array.isArray(item.methods) &&
               item.ID_SECTION === section_id_active
             ) {
-              return 63 + item.methods.length * 55;
+              return 63 + item.methods.length * 47;
             }
             return 63;
           }} // Also supports variable heights (array or function getter)
@@ -48,7 +47,7 @@ const Navigation: React.FC<Props> = ({ endpoints }) => {
                     style={{ textDecoration: "none" }}
                   >
                     <Text
-                      type={DESCRIPTION_ENDPOINT}
+                      type={TEXT_SMALL}
                       onClick={() =>
                         dispatch({
                           type: "SET_ID_SECTION",
@@ -83,9 +82,9 @@ const Navigation: React.FC<Props> = ({ endpoints }) => {
                                 style={{ textDecoration: "none" }}
                               >
                                 <Text
-                                  type={DESCRIPTION_METHOD_SECTION}
+                                  type={TEXT_SMALL}
                                   {...(sub_section_id_active ===
-                                  subitem.ID_SECTION
+                                    subitem.ID_SECTION
                                     ? { style: { color: "#00BCD4" } }
                                     : {})}
                                 >
