@@ -1,46 +1,47 @@
 .Schema {
   background-color: #fff;
   padding: 16px;
-  border-radius: 6px;
-  border: 1px solid #d0d0d0;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
+  border: 1px solid #ebebeb;
+  font-family: monospace;
+  font-weight: 400
 }
 
 .Schema .Schema__name {
-	font-weight: bold;
-	font-size: 18px;
-	margin-right: 6px;
+	font-size: 12px;
 }
 
 .Schema .Schema__brace {
-	font-size: 18px;
+	font-size: 12px;
 	color: gray;
 }
 
 .Schema ul {
   list-style: none;
   margin: 0;
-  padding: 18px 0px 0px 0px;
+  padding: 0 0px 0px 0px;
 }
 
 .Property {
   padding-left: 18px;
-  padding-bottom: 12px;
+  padding-bottom: 2px;
   display: flex;
 }
 
 .Property .Property__key {
   width: 250px;
+  font-size: 12px;
 }
 
 .Property .Property__type {
   color: blue;
   font-weight: bold;
+  font-size: 11px;
 }
 
 .Property .Property__required {
   color: red;
   font-weight: bold;
+  font-size: 11px;
 }
 
 .Property .Property__values {
@@ -58,7 +59,7 @@
 }
 
 .ToggleSchema .ToggleSchema__title {
-  font-size: 16px;
+  font-size: 12px;
   margin-right: 6px;
   font-weight: bold;
 }

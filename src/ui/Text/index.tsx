@@ -13,6 +13,7 @@ export const TITLE_ENDPOINT = "TITLE_ENDPOINT";
 export const DESCRIPTION_ENDPOINT = "DESCRIPTION_ENDPOINT";
 export const TITLE_METHOD_SECTION = "TITLE_METHOD_SECTION";
 export const DESCRIPTION_METHOD_SECTION = "DESCRIPTION_METHOD_SECTION";
+export const TEXT_SMALL = "TEXT_SMALL";
 
 // Text component to use in all text use cases
 // Sometime we want render <br/> because the text have \n (OA3)
@@ -68,6 +69,13 @@ const Text: React.FC<Props> = props => {
   } else if (type === DESCRIPTION_METHOD_SECTION) {
     return (
       <p {...extraProps} className="Text__Description-Method">
+        {children}
+      </p>
+    );
+
+  } else if (type === TEXT_SMALL) {
+    return (
+      <p {...extraProps} className="Text__Small">
         {children}
       </p>
     );

@@ -42,10 +42,17 @@ const StrategyOpenApi3 = endpoints => {
 
   const resolveRequestBodyOpenApi3 = method_data => {
     const content_entries = Object.entries(method_data.content);
-    return {
-      content_type: content_entries[0][0],
-      body: resolve_ref_recursive(content_entries[0][1].schema.$ref)
-    };
+    if ('$ref' in content_entries[0][1].schema) {
+      return {
+        content_type: content_entries[0][0],
+        body: resolve_ref_recursive(content_entries[0][1].schema.$ref)
+      }
+    } else {
+      return {
+        content_type: content_entries[0][0],
+        body: content_entries[0][1].schema
+      }
+    }
   };
 
   const resolveResponsesBodyOpenApi3 = responses_data => {
