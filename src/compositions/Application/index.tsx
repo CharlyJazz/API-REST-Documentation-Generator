@@ -10,7 +10,7 @@ import worker from "workerize-loader!../../worker"; // eslint-disable-line impor
 
 interface Props {
   endpoints: {}[] | {};
-  specification: SpecificationsAllowed
+  specification: SpecificationsAllowed;
 }
 /*
  * If there are a user, a worker will set the unique id of each section
@@ -22,14 +22,14 @@ const App: React.FC<Props> = ({ endpoints, specification }) => {
   const workerInstance = worker();
   const [data, setData] = useState([]);
   const {
-    state: { withLogin }
+    state: { with_login },
   } = useContext(ConfigurationContext);
   const {
-    state: { email }
+    state: { email },
   } = useContext(UserContext);
   useEffect(() => {
-    if (!withLogin || (withLogin && email)) {
-      workerInstance.addEventListener("message", message => {
+    if (!with_login || (with_login && email)) {
+      workerInstance.addEventListener("message", (message) => {
         if (message.data.endpoint_message) {
           if (process.env.NODE_ENV === "development") {
             console.log("New Message: ", message.data);
@@ -39,9 +39,9 @@ const App: React.FC<Props> = ({ endpoints, specification }) => {
       });
       workerInstance.generateEndpoints(endpoints, specification);
     }
-  }, [withLogin, email, endpoints]);
+  }, [with_login, email, endpoints]);
 
-  if (withLogin && !email) {
+  if (with_login && !email) {
     return <Login />;
   }
 

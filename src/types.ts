@@ -3,7 +3,7 @@ export type SchemaType = {
   rules: {};
 };
 
-export type SpecificationsAllowed = 'oa3' | 'default'
+export type SpecificationsAllowed = "oa3" | "default";
 
 export interface MethodProps {
   description?: string;
@@ -26,16 +26,15 @@ export interface Endpoint {
 
 export interface Action {
   type: string;
-  payload: any
+  payload: any;
 }
-
 
 export interface Config {
   loginStrategy: (email: string, password: string) => any;
   logoutStrategy: () => void;
   getUserStrategy: () => any;
-  withLogin: boolean;
-  urlBase: string;
+  with_login: boolean;
+  url_base: string;
   endpoint_url: string;
   endpoints?: any;
   specification: SpecificationsAllowed;
@@ -45,6 +44,10 @@ export interface Config {
   };
   header: {
     enable: boolean;
-    logo_url: string
-  }
+    logo_url: string;
+  };
+  first_content: {
+    title: string;
+    description: string;
+  };
 }

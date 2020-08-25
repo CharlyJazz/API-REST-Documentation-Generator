@@ -58,12 +58,11 @@
 ],
 ```
 
-- In `src/config.ts` you can use Firebase for implement a Login form, you need create a .env file and set your application key REACT_APP_FIREBASE=KEY. You can turn off the login with the `withLogin` flag in `src/config.ts`.
+- In `src/config.ts` you can use Firebase for implement a Login form, you need create a .env file and set your application key REACT_APP_FIREBASE=KEY. You can turn off the login with the `with_login` flag in `src/config.ts`.
 
 ## Features
 
 - You can customize all the styles of this project, this project dont have any framework or ui library, just scss files
-
 
 ## Code Structure
 

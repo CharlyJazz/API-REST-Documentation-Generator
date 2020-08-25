@@ -27,10 +27,10 @@ const methodColor = (method: string) => {
 
 // This componente receive the endpoint url, method
 // User can copy the url
-const RequestURL: React.FC<Props> = props => {
+const RequestURL: React.FC<Props> = (props) => {
   const { method, url } = props;
   const {
-    state: { urlBase }
+    state: { url_base },
   } = useContext(ConfigurationContext);
   return (
     <>
@@ -40,7 +40,7 @@ const RequestURL: React.FC<Props> = props => {
           <p style={{ color: methodColor(method.toLowerCase()) }}>{method}</p>
         </div>
         <div className="RequestURL__url">
-          <p>{`${urlBase}${url}`}</p>
+          <p>{`${url_base}${url}`}</p>
         </div>
       </div>
     </>

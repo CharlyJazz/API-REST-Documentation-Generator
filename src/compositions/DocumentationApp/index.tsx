@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 import EndpointSection from "./EndpointSection";
 import { Endpoint } from "../../types";
 import { SearchContext } from "../../providers/SearchProvider";
+import { ConfigurationContext } from "../../providers/ConfigurationProvider";
 
 interface Props {
   data: Endpoint[];
@@ -15,44 +16,46 @@ interface Props {
 */
 const DocumentationApp: React.FC<Props> = ({ data }) => {
   const {
-    state: { section_id_active }
+    state: { section_id_active },
   } = useContext(SearchContext);
-  const renderEndpointSection = () => {
-    if (section_id_active) {
-      try {
-        const findedEndpoint: Endpoint = data.filter(
-          n => n.ID_SECTION === section_id_active
-        )[0];
-
-        return (
-          <EndpointSection
-            title={findedEndpoint.title}
-            description={findedEndpoint.description}
-            schema={findedEndpoint.fields}
-            methods={findedEndpoint.methods}
-            ID_SECTION={findedEndpoint.ID_SECTION}
-          />
-        );
-      } catch (error) {
-        return null;
-      }
-    }
-
-    return (
-      <EndpointSection
-        title="Welcome!"
-        description="You can navigate and search endpoints."
-        ID_SECTION="Initial"
-      />
-    );
+  const refContent = useRef<HTMLDivElement | null>(null);
+  const {
+    state: { first_content },
+  } = useContext(ConfigurationContext);
+  const [menu, setMenu] = useState<boolean>(true);
+  const toggleMenu = () => {
+    setMenu(!menu);
   };
-
+  const endpoint: Endpoint | undefined = data.find(
+    (n) => n.ID_SECTION === section_id_active
+  );
+  useEffect(() => {
+    if (refContent?.current) {
+      refContent.current.scrollTop = 0;
+    }
+  }, [section_id_active]);
   return (
     <div>
-      <Header {...{ data }} />
+      <Header {...{ data }} hideMenu={toggleMenu} />
       <div style={{ display: "flex", height: `calc(100vh - 145px)` }}>
-        <Navigation endpoints={data} />
-        {renderEndpointSection()}
+        {menu ? <Navigation endpoints={data} /> : null}
+        {endpoint ? (
+          <EndpointSection
+            ref={refContent}
+            title={endpoint.title}
+            description={endpoint.description}
+            schema={endpoint.fields}
+            methods={endpoint.methods}
+            ID_SECTION={endpoint.ID_SECTION}
+          />
+        ) : (
+          <EndpointSection
+            ref={refContent}
+            title={first_content.title}
+            description={first_content.description}
+            ID_SECTION="Initial"
+          />
+        )}
       </div>
       <Footer />
     </div>

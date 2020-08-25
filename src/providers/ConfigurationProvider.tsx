@@ -1,30 +1,34 @@
 import React, { useEffect } from "react";
 import { Action, Config } from "../types";
 
-interface InitialState extends Config { }
+interface InitialState extends Config {}
 
 const initialState: InitialState = {
   loginStrategy: () => null,
   logoutStrategy: () => null,
   getUserStrategy: () => null,
-  withLogin: true,
-  urlBase: '',
-  endpoint_url: '',
-  specification: 'oa3',
+  with_login: true,
+  url_base: "",
+  endpoint_url: "",
+  specification: "oa3",
   footer: {
     enable: true,
-    text: '',
+    text: "",
   },
   header: {
     enable: true,
-    logo_url: ''
-  }
+    logo_url: "",
+  },
+  first_content: {
+    title: "",
+    description: "",
+  },
 };
 
 const reducer = (state: InitialState, action: Action) => {
   switch (action.type) {
-    case 'INITIAL_SETUP':
-      return action.payload
+    case "INITIAL_SETUP":
+      return action.payload;
     default:
       return state;
   }
@@ -35,7 +39,7 @@ const ConfigurationContext = React.createContext<{
   dispatch: React.Dispatch<Action>;
 }>({
   state: initialState,
-  dispatch: () => { }
+  dispatch: () => {},
 });
 
 const useConfiguration = () => {
@@ -43,15 +47,17 @@ const useConfiguration = () => {
   return contextValue;
 };
 
-
-interface Props { children: React.ReactNode; config: any }
+interface Props {
+  children: React.ReactNode;
+  config: any;
+}
 
 const ConfigurationProvider: React.FC<Props> = ({ children, config }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const value = { state, dispatch };
   useEffect(() => {
-    dispatch({ type: 'INITIAL_SETUP', payload: config })
-  }, [config])
+    dispatch({ type: "INITIAL_SETUP", payload: config });
+  }, [config]);
   return (
     <ConfigurationContext.Provider value={value}>
       {children}

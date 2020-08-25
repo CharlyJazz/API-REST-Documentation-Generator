@@ -10,7 +10,7 @@ interface InitialState {
 const initialState: InitialState = {
   text: "",
   section_id_active: "",
-  sub_section_id_active: ""
+  sub_section_id_active: "",
 };
 
 const reducer = (state: InitialState, action: Action) => {
@@ -19,17 +19,17 @@ const reducer = (state: InitialState, action: Action) => {
       return {
         ...state,
         section_id_active: action.payload.value,
-        sub_section_id_active: ""
+        sub_section_id_active: "",
       };
     case "SET_ID_SUB_SECTION":
       return {
         ...state,
-        sub_section_id_active: action.payload.value
+        sub_section_id_active: action.payload.value,
       };
     case "SEARCH_TEXT":
       return {
         ...state,
-        text: action.payload.value
+        text: action.payload.value,
       };
     default:
       return state;
@@ -41,7 +41,7 @@ const SearchContext = React.createContext<{
   dispatch: React.Dispatch<Action>;
 }>({
   state: initialState,
-  dispatch: () => { }
+  dispatch: () => {},
 });
 
 const useSearch = () => {

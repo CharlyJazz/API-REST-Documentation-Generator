@@ -7,13 +7,18 @@ import "./styles.scss";
 
 // This component will be use the the logo
 // setted in the provider, the colors and brand name
-const Header: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
+const Header: React.FC<{ data?: Endpoint[]; hideMenu(): void }> = ({
+  data,
+  hideMenu,
+}) => {
   let timeout: any = null;
 
   const refInput: any = useRef<HTMLInputElement>(null);
   const { dispatch } = useContext(SearchContext);
   const {
-    state: { header: { logo_url, enable } }
+    state: {
+      header: { logo_url, enable },
+    },
   } = useContext(ConfigurationContext);
 
   const handleInput = () => {
@@ -21,7 +26,7 @@ const Header: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
     timeout = setTimeout(function () {
       dispatch({
         type: "SEARCH_TEXT",
-        payload: { value: refInput.current.value }
+        payload: { value: refInput.current.value },
       });
     }, 500);
   };
@@ -29,10 +34,7 @@ const Header: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
   return enable ? (
     <header className="Header">
       <div>
-        <img
-          src={logo_url}
-          alt="Rest Documentation Logo"
-        />
+        <img src={logo_url} alt="Rest Documentation Logo" />
       </div>
       <div>
         <form>
@@ -41,7 +43,7 @@ const Header: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
             <Results {...{ data }} />
           </div>
         </form>
-        <button>
+        <button onClick={hideMenu}>
           <div>
             <div></div>
             <div></div>

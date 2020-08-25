@@ -8,17 +8,17 @@ const loginStrategy = (email: string, password: string) => {
       body: JSON.stringify({
         email: email,
         password: password,
-        returnSecureToken: true
+        returnSecureToken: true,
       }),
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     }
   )
-    .then(res => {
+    .then((res) => {
       return res.json();
     })
-    .then(res => {
+    .then((res) => {
       if ("error" in res) {
         return false;
       } else {
@@ -32,7 +32,7 @@ const loginStrategy = (email: string, password: string) => {
         return res;
       }
     })
-    .catch(err => {
+    .catch((err) => {
       return false;
     });
 };
@@ -57,7 +57,7 @@ const getUserStrategy = () => {
       return { user_expired: true };
     } else {
       return {
-        email: email
+        email: email,
       };
     }
   } else {
@@ -65,32 +65,36 @@ const getUserStrategy = () => {
   }
 };
 
-const withLogin = !false;
+const with_login = false;
 
-const urlBase = 'https://yourfreshapi.com'
+const url_base = "https://yourfreshapi.com";
 
-const endpoint_url = 'http://localhost:3000/data/openapi3.json'
+const endpoint_url = "http://localhost:3000/data/benevika.json";
 
-const specification: SpecificationsAllowed = 'oa3'
+const specification: SpecificationsAllowed = "oa3";
 
 const footer = {
   enable: true,
-  text: 'asd My footer xdddd'
-}
+  text: "Made with ❤",
+};
 
 const header = {
   enable: true,
-  logo_url: 'https://baller-documentation.firebaseapp.com/static/media/logo.46eb94ae.png'
-}
+  logo_url: "https://bpreferee.com/static/logo.png",
+};
 
 export default {
   loginStrategy,
   logoutStrategy,
   getUserStrategy,
-  withLogin,
-  urlBase,
+  with_login,
+  url_base,
   endpoint_url,
   specification,
   footer,
-  header
+  header,
+  first_content: {
+    title: "Welcome!",
+    description: "You can navigate and search endpoints.",
+  },
 };

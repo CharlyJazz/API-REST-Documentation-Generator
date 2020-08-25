@@ -6,27 +6,25 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  email: ""
+  email: "",
 };
-
-
 
 const reducer = (state: InitialState, action: Action) => {
   switch (action.type) {
     case "LOGIN_SUCCESS": {
       return {
         ...state,
-        email: action.payload.email
+        email: action.payload.email,
       };
     }
     case "GET_LOGGED_USER": {
       return {
         ...state,
-        email: action.payload.email
+        email: action.payload.email,
       };
     }
     default:
-      return state
+      return state;
   }
 };
 
@@ -35,7 +33,7 @@ const UserContext = React.createContext<{
   dispatch: React.Dispatch<Action>;
 }>({
   state: initialState,
-  dispatch: () => { }
+  dispatch: () => {},
 });
 
 const useUser = () => {
@@ -43,19 +41,20 @@ const useUser = () => {
   return contextValue;
 };
 
-interface Props { children: React.ReactNode; config: any }
+interface Props {
+  children: React.ReactNode;
+  config: any;
+}
 
 const UserProvider: React.FC<Props> = ({ children, config }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const value = { state, dispatch };
   useEffect(() => {
-    const user = config.getUserStrategy()
-    if (user && 'email' in user)
-      dispatch({ type: 'GET_LOGGED_USER', payload: user })
-  }, [config])
-  return (
-    <UserContext.Provider value={value}>{children}</UserContext.Provider>
-  );
+    const user = config.getUserStrategy();
+    if (user && "email" in user)
+      dispatch({ type: "GET_LOGGED_USER", payload: user });
+  }, [config]);
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
 export { UserProvider, UserContext, useUser };

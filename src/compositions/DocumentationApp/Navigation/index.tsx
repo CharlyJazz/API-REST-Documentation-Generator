@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import VirtualList from "react-tiny-virtual-list";
-import Text, {
-  TEXT_SMALL,
-} from "../../../ui/Text";
+import Text, { TEXT_SMALL } from "../../../ui/Text";
 import { Endpoint } from "../../../types";
 import { SearchContext } from "../../../providers/SearchProvider";
 import "./styles.scss";
@@ -15,7 +13,7 @@ interface Props {
 const Navigation: React.FC<Props> = ({ endpoints }) => {
   const {
     dispatch,
-    state: { section_id_active, sub_section_id_active }
+    state: { section_id_active, sub_section_id_active },
   } = useContext(SearchContext);
   if (!endpoints || !Array.isArray(endpoints)) {
     return null;
@@ -27,7 +25,7 @@ const Navigation: React.FC<Props> = ({ endpoints }) => {
           width="100%"
           height={window.innerHeight - 150}
           itemCount={endpoints.length}
-          itemSize={index => {
+          itemSize={(index) => {
             const item = endpoints[index];
             if (
               Array.isArray(item.methods) &&
@@ -42,38 +40,33 @@ const Navigation: React.FC<Props> = ({ endpoints }) => {
             return (
               <div key={index} style={style}>
                 <li key={item.ID_SECTION}>
-                  <a
-                    href={`#${item.ID_SECTION}`}
-                    style={{ textDecoration: "none" }}
+                  <Text
+                    type={TEXT_SMALL}
+                    onClick={() =>
+                      dispatch({
+                        type: "SET_ID_SECTION",
+                        payload: { value: item.ID_SECTION },
+                      })
+                    }
+                    {...(section_id_active === item.ID_SECTION
+                      ? { style: { color: "#00BCD4" } }
+                      : {})}
                   >
-                    <Text
-                      type={TEXT_SMALL}
-                      onClick={() =>
-                        dispatch({
-                          type: "SET_ID_SECTION",
-                          payload: { value: item.ID_SECTION }
-                        })
-                      }
-                      {...(section_id_active === item.ID_SECTION
-                        ? { style: { color: "#00BCD4" } }
-                        : {})}
-                    >
-                      <span style={{ textTransform: "capitalize" }}>
-                        {item.title}
-                      </span>
-                    </Text>
-                  </a>
+                    <span style={{ textTransform: "capitalize" }}>
+                      {item.title}
+                    </span>
+                  </Text>
                   {Array.isArray(item.methods) &&
                     section_id_active === item.ID_SECTION && (
                       <ul>
-                        {item.methods.map(subitem => {
+                        {item.methods.map((subitem) => {
                           return (
                             <li
                               key={subitem.ID_SECTION}
                               onClick={() =>
                                 dispatch({
                                   type: "SET_ID_SUB_SECTION",
-                                  payload: { value: subitem.ID_SECTION }
+                                  payload: { value: subitem.ID_SECTION },
                                 })
                               }
                             >
@@ -84,7 +77,7 @@ const Navigation: React.FC<Props> = ({ endpoints }) => {
                                 <Text
                                   type={TEXT_SMALL}
                                   {...(sub_section_id_active ===
-                                    subitem.ID_SECTION
+                                  subitem.ID_SECTION
                                     ? { style: { color: "#00BCD4" } }
                                     : {})}
                                 >
