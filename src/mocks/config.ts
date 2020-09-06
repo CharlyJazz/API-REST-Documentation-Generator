@@ -69,7 +69,7 @@ const with_login = false;
 
 const url_base = "https://yourfreshapi.com";
 
-const endpoint_url = "http://localhost:3000/data/benevika.json";
+const endpoint_url = "http://localhost:3000/data/api.json";
 
 const specification: SpecificationsAllowed = "oa3";
 

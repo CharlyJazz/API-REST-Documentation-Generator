@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "./styles.scss";
 
 const ToggleSchema = ({ schema }) => {
@@ -8,10 +8,10 @@ const ToggleSchema = ({ schema }) => {
     <div className="ToggleSchema">
       <div onClick={() => setShow(!show)}>
         <span className="ToggleSchema__title">{schema.title}</span>
-        <span className="ToggleSchema__brace">{!show ? '{...}' : ''}</span>
+        <span className="ToggleSchema__brace">{!show ? "{...}" : ""}</span>
       </div>
       {show && (
-        <div style={{ marginTop: '6px' }}>
+        <div style={{ marginTop: "6px" }}>
           <ResponseSchema onlyProps data={schema} />
         </div>
       )}
@@ -23,7 +23,7 @@ interface PropertyProps {
   name: string;
   property: any;
   isRequired: boolean;
-};
+}
 
 const Property: React.FC<PropertyProps> = ({ name, property, isRequired }) => {
   return (
@@ -36,20 +36,20 @@ const Property: React.FC<PropertyProps> = ({ name, property, isRequired }) => {
         {property.properties ? (
           <ToggleSchema schema={property} />
         ) : (
-            <div>
-              <div className="Property__type">{property.type}</div>
-              {property.description ? (
-                <div className="Property__description">
-                  {property.description}
-                </div>
-              ) : null}
-              {property.example ? (
-                <div className="Property__example">
-                  Example: {property.example}
-                </div>
-              ) : null}
-            </div>
-          )}
+          <div>
+            <div className="Property__type">{property.type}</div>
+            {property.description ? (
+              <div className="Property__description">
+                {property.description}
+              </div>
+            ) : null}
+            {property.example ? (
+              <div className="Property__example">
+                Example: {property.example}
+              </div>
+            ) : null}
+          </div>
+        )}
       </div>
     </li>
   );
@@ -58,7 +58,7 @@ const Property: React.FC<PropertyProps> = ({ name, property, isRequired }) => {
 interface SchemaProps {
   data: any;
   onlyProps?: boolean;
-};
+}
 
 const ResponseSchema: React.FC<SchemaProps> = ({ data, onlyProps }) => {
   if (!data) {
@@ -66,44 +66,56 @@ const ResponseSchema: React.FC<SchemaProps> = ({ data, onlyProps }) => {
       <div className="Schema">
         <span className="Schema__name">No response example</span>
       </div>
-    )
+    );
   } else if (Array.isArray(data)) {
     return (
       <div className="Schema">
-        <span className="Schema__brace">{'[{'}</span>
+        <span className="Schema__brace">{"[{"}</span>
         <ul>
           {Object.keys(data[0].properties).map((key) => {
             const property = data[0].properties[key];
 
-            return <Property
-              key={key}
-              name={key}
-              property={property}
-              isRequired={data[0].required ? data[0].required.indexOf(key) !== -1 : false}
-            />;
+            return (
+              <Property
+                key={key}
+                name={key}
+                property={property}
+                isRequired={
+                  data[0].required
+                    ? data[0].required.indexOf(key) !== -1
+                    : false
+                }
+              />
+            );
           })}
         </ul>
-        <span className="Schema__brace">{'}...]'}</span>
-      </div>)
+        <span className="Schema__brace">{"}...]"}</span>
+      </div>
+    );
   } else {
     return (
       <div className="Schema">
-        <span className="Schema__brace">{'{'}</span>
+        <span className="Schema__brace">{"{"}</span>
         <ul>
-          {Object.keys(data.properties).map((key) => {
-            const property = data.properties[key];
+          {data.properties &&
+            Object.keys(data.properties).map((key) => {
+              const property = data.properties[key];
 
-            return <Property
-              key={key}
-              name={key}
-              property={property}
-              isRequired={data.required ? data.required.indexOf(key) !== -1 : false}
-            />;
-          })}
+              return (
+                <Property
+                  key={key}
+                  name={key}
+                  property={property}
+                  isRequired={
+                    data.required ? data.required.indexOf(key) !== -1 : false
+                  }
+                />
+              );
+            })}
         </ul>
-        <span className="Schema__brace">{'}'}</span>
+        <span className="Schema__brace">{"}"}</span>
       </div>
-    )
+    );
   }
 };
 

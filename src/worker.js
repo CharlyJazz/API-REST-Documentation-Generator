@@ -1,5 +1,5 @@
-const StrategyOpenApi3 = endpoints => {
-  const resolve_ref_recursive = ref => {
+const StrategyOpenApi3 = (endpoints) => {
+  const resolve_ref_recursive = (ref) => {
     // Some like components.schema.SchemaOfModel; to Array
     const array_of_keys = ref.substring(2).split("/");
     let obj = Object.assign(endpoints, {}); // endpoints solamente
@@ -8,7 +8,7 @@ const StrategyOpenApi3 = endpoints => {
       obj = obj[array_of_keys[i]];
     }
 
-    if ("properties" in obj) {
+    if (obj && "properties" in obj) {
       const array_of_attributes = Object.entries(obj.properties);
       for (let i = 0; i < array_of_attributes.length; i++) {
         let element = array_of_attributes[i][1];
@@ -32,7 +32,7 @@ const StrategyOpenApi3 = endpoints => {
           "$ref" in element.items
         ) {
           obj.properties[array_of_attributes[i][0]].items = [
-            resolve_ref_recursive(element.items.$ref)
+            resolve_ref_recursive(element.items.$ref),
           ];
         }
       }
@@ -40,24 +40,24 @@ const StrategyOpenApi3 = endpoints => {
     return obj;
   };
 
-  const resolveRequestBodyOpenApi3 = method_data => {
+  const resolveRequestBodyOpenApi3 = (method_data) => {
     const content_entries = Object.entries(method_data.content);
-    if ('$ref' in content_entries[0][1].schema) {
+    if ("$ref" in content_entries[0][1].schema) {
       return {
         content_type: content_entries[0][0],
-        body: resolve_ref_recursive(content_entries[0][1].schema.$ref)
-      }
+        body: resolve_ref_recursive(content_entries[0][1].schema.$ref),
+      };
     } else {
       return {
         content_type: content_entries[0][0],
-        body: content_entries[0][1].schema
-      }
+        body: content_entries[0][1].schema,
+      };
     }
   };
 
-  const resolveResponsesBodyOpenApi3 = responses_data => {
+  const resolveResponsesBodyOpenApi3 = (responses_data) => {
     const response_entries = Object.entries(responses_data);
-    return response_entries.map(n => {
+    return response_entries.map((n) => {
       const optional_content = {};
       if ("content" in n[1]) {
         const content_entries = Object.entries(n[1].content);
@@ -68,14 +68,14 @@ const StrategyOpenApi3 = endpoints => {
           );
         } else if ("items" in content_entries[0][1].schema) {
           optional_content.body = [
-            resolve_ref_recursive(content_entries[0][1].schema.items.$ref)
+            resolve_ref_recursive(content_entries[0][1].schema.items.$ref),
           ];
         }
       }
       return {
         http_status: n[0],
         description: n[1].description,
-        ...optional_content
+        ...optional_content,
       };
     });
   };
@@ -95,7 +95,7 @@ const StrategyOpenApi3 = endpoints => {
             title: tag,
             description: "",
             ID_SECTION: `${j + 1}_${url}`,
-            methods: []
+            methods: [],
           };
         }
         tags[tag].methods.push({
@@ -111,7 +111,7 @@ const StrategyOpenApi3 = endpoints => {
             "requestBody" in details
               ? resolveRequestBodyOpenApi3(details.requestBody)
               : {},
-          ID_SECTION: details.operationId
+          ID_SECTION: details.operationId,
         });
       }
     }
@@ -120,7 +120,7 @@ const StrategyOpenApi3 = endpoints => {
   return Object.values(tags);
 };
 
-const StrategyDefault = endpoints => {
+const StrategyDefault = (endpoints) => {
   const output = [];
   for (let i = 0; i < endpoints.length; i++) {
     const element = endpoints[i];
