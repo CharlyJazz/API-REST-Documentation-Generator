@@ -6,7 +6,7 @@ import Render from "./Render";
  * or/and render ui or catch error
  * @param config have all configutation to create the documentation
  */
-const CreateDoc = (config: Config): void => {
+const CreateDoc = (config: Config): any => {
   if (config.endpoint_url) {
     fetch(config.endpoint_url)
       .then((res) => {

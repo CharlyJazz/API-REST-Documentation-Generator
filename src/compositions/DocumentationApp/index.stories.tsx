@@ -1,7 +1,7 @@
 import React from "react";
 import DocumentationApp from ".";
-import data from "../../data/endpoints.json";
-import generateData from "../../mocks/generateData";
+import CreateDoc from "../../lib/CreateDoc";
+import config from "../../mocks/config";
 import { SearchProvider } from "../../providers/SearchProvider";
 
 export default {
@@ -11,5 +11,5 @@ export default {
 };
 
 export const simpleExample: React.FC = () => (
-  <DocumentationApp data={generateData(data)} />
+  <DocumentationApp data={CreateDoc(config)} />
 );
