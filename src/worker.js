@@ -8,7 +8,7 @@ const StrategyOpenApi3 = (endpoints) => {
       obj = obj[array_of_keys[i]];
     }
 
-    if (obj && "properties" in obj) {
+    if ("properties" in obj) {
       const array_of_attributes = Object.entries(obj.properties);
       for (let i = 0; i < array_of_attributes.length; i++) {
         let element = array_of_attributes[i][1];
@@ -36,6 +36,22 @@ const StrategyOpenApi3 = (endpoints) => {
           ];
         }
       }
+    } else if (
+      // No todos los schema tienen $ref directamente,
+      // a veces lo tienen adentro de items
+      // "schema": {
+      //   "title": "Response Read Contacts Auth V0 0 Contacts  Get",
+      //   "type": "array",
+      //   "items": { "$ref": "#/components/schemas/ContactRead" }
+      // }
+      "type" in obj &&
+      obj.type === "array" &&
+      "items" in obj &&
+      "$ref" in obj.items
+    ) {
+      obj.items = [
+        resolve_ref_recursive(obj.items.$ref),
+      ];
     }
     return obj;
   };
