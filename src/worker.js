@@ -88,8 +88,35 @@ const StrategyOpenApi3 = (endpoints) => {
     const method_entries = Object.entries(methods);
     for (let j = 0; j < method_entries.length; j++) {
       const [method, details] = method_entries[j];
-      for (let n = 0; n < details.tags.length; n++) {
-        const tag = details.tags[n];
+      if ("tags" in details) {
+        for (let n = 0; n < details.tags.length; n++) {
+          const tag = details.tags[n];
+          if (!(tag in tags)) {
+            tags[tag] = {
+              title: tag,
+              description: "",
+              ID_SECTION: `${j + 1}_${url}`,
+              methods: [],
+            };
+          }
+          tags[tag].methods.push({
+            title: details.summary,
+            description: details.description,
+            method: method,
+            url: url,
+            response:
+              "responses" in details
+                ? resolveResponsesBodyOpenApi3(details.responses)
+                : [],
+            request:
+              "requestBody" in details
+                ? resolveRequestBodyOpenApi3(details.requestBody)
+                : {},
+            ID_SECTION: details.operationId,
+          });
+        }
+      } else {
+        const tag = url.substring(1).split("/")[0];
         if (!(tag in tags)) {
           tags[tag] = {
             title: tag,
