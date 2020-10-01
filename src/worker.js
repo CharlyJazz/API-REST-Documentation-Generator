@@ -8,7 +8,7 @@ const StrategyOpenApi3 = (endpoints) => {
       obj = obj[array_of_keys[i]];
     }
 
-    if (obj && "properties" in obj) {
+    if ("properties" in obj) {
       const array_of_attributes = Object.entries(obj.properties);
       for (let i = 0; i < array_of_attributes.length; i++) {
         let element = array_of_attributes[i][1];
@@ -36,6 +36,22 @@ const StrategyOpenApi3 = (endpoints) => {
           ];
         }
       }
+    } else if (
+      // No todos los schema tienen $ref directamente,
+      // a veces lo tienen adentro de items
+      // "schema": {
+      //   "title": "Response Read Contacts Auth V0 0 Contacts  Get",
+      //   "type": "array",
+      //   "items": { "$ref": "#/components/schemas/ContactRead" }
+      // }
+      "type" in obj &&
+      obj.type === "array" &&
+      "items" in obj &&
+      "$ref" in obj.items
+    ) {
+      obj.items = [
+        resolve_ref_recursive(obj.items.$ref),
+      ];
     }
     return obj;
   };
@@ -88,8 +104,35 @@ const StrategyOpenApi3 = (endpoints) => {
     const method_entries = Object.entries(methods);
     for (let j = 0; j < method_entries.length; j++) {
       const [method, details] = method_entries[j];
-      for (let n = 0; n < details.tags.length; n++) {
-        const tag = details.tags[n];
+      if ("tags" in details) {
+        for (let n = 0; n < details.tags.length; n++) {
+          const tag = details.tags[n];
+          if (!(tag in tags)) {
+            tags[tag] = {
+              title: tag,
+              description: "",
+              ID_SECTION: `${j + 1}_${url}`,
+              methods: [],
+            };
+          }
+          tags[tag].methods.push({
+            title: details.summary,
+            description: details.description,
+            method: method,
+            url: url,
+            response:
+              "responses" in details
+                ? resolveResponsesBodyOpenApi3(details.responses)
+                : [],
+            request:
+              "requestBody" in details
+                ? resolveRequestBodyOpenApi3(details.requestBody)
+                : {},
+            ID_SECTION: details.operationId,
+          });
+        }
+      } else {
+        const tag = url.substring(1).split("/")[0];
         if (!(tag in tags)) {
           tags[tag] = {
             title: tag,

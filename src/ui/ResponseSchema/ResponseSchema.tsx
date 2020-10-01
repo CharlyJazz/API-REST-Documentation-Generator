@@ -97,7 +97,7 @@ const ResponseSchema: React.FC<SchemaProps> = ({ data, onlyProps }) => {
       <div className="Schema">
         <span className="Schema__brace">{"{"}</span>
         <ul>
-          {data.properties &&
+          {data.properties ?
             Object.keys(data.properties).map((key) => {
               const property = data.properties[key];
 
@@ -111,7 +111,23 @@ const ResponseSchema: React.FC<SchemaProps> = ({ data, onlyProps }) => {
                   }
                 />
               );
-            })}
+            })
+            :
+            Object.keys(data.items[0].properties).map((key) => {
+              const property = data.items[0].properties[key];
+
+              return (
+                <Property
+                  key={key}
+                  name={key}
+                  property={property}
+                  isRequired={
+                    data.items[0].required ? data.items[0].required.indexOf(key) !== -1 : false
+                  }
+                />
+              );
+            })
+          }
         </ul>
         <span className="Schema__brace">{"}"}</span>
       </div>
