@@ -11,7 +11,7 @@
 
 ## Steps
 
-- You can put your json in `public/data/` and edit the value of `endpoint_url` in `config.ts`. Currently you also need to have a dummy `endpoints.json` inside `src/data/`, but we're working on removing that need.
+- You can put your json in `public/data/` and edit the value of `endpoint_url` in `config.ts`.
 
 - If your json dont have this structure you can edit the `generateData()` function in `generateData.ts` and make sure the output satisfy the typescript interface `Endpoint`. This is a implementation of a strategy pattern to allow you use this project with any json structure of your api schema, not only a OpenAPI structure.
 

@@ -1,8 +1,8 @@
 import React from "react";
 import Navigation from ".";
 import { Endpoint } from "../../../types";
-import data from "../../../data/endpoints.json";
-import generateData from "../../../mocks/generateData";
+import CreateDoc from "../../../lib/CreateDoc";
+import config from "../../../mocks/config";
 
 export default {
   title: "Navigation",
@@ -10,6 +10,6 @@ export default {
 };
 
 export const simpleExample: React.FC = () => {
-  const endpoints: Endpoint[] = generateData(data);
+  const endpoints: Endpoint[] = CreateDoc(config);
   return <Navigation endpoints={endpoints} />;
 };
