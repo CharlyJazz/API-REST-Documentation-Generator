@@ -178,11 +178,13 @@ const StrategyDefault = (endpoints) => {
   return output;
 };
 
-export const generateEndpoints = (data, specification) => {
-  if (specification === "default") {
+export const generateEndpoints = (data) => {
+  if (!("openapi" in data)) {
     data = StrategyDefault(data);
-  } else if (specification === "oa3") {
+  } else if ("openapi" in data && /^3.0.[0-3]$/.test(data.openapi)) {
     data = StrategyOpenApi3(data);
+  } else {
+    console.error("Specification not yet supported")
   }
   postMessage({ endpoint_message: true, endpoints: data });
 };

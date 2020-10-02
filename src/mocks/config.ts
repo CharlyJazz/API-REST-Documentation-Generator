@@ -1,5 +1,3 @@
-import { SpecificationsAllowed } from "../types";
-
 const loginStrategy = (email: string, password: string) => {
   return fetch(
     `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${process.env.REACT_APP_FIREBASE}`,
@@ -71,8 +69,6 @@ const url_base = "https://yourfreshapi.com";
 
 const endpoint_url = "http://localhost:3000/data/api.json";
 
-const specification: SpecificationsAllowed = "oa3";
-
 const footer = {
   enable: true,
   text: "Made with ❤",
@@ -90,7 +86,6 @@ export default {
   with_login,
   url_base,
   endpoint_url,
-  specification,
   footer,
   header,
   first_content: {

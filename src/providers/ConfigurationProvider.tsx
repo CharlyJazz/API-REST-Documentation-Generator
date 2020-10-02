@@ -10,7 +10,6 @@ const initialState: InitialState = {
   with_login: true,
   url_base: "",
   endpoint_url: "",
-  specification: "oa3",
   footer: {
     enable: true,
     text: "",

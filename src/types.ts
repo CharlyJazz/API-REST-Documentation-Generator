@@ -3,8 +3,6 @@ export type SchemaType = {
   rules: {};
 };
 
-export type SpecificationsAllowed = "oa3" | "default";
-
 export interface MethodProps {
   description?: string;
   method: string;
@@ -37,7 +35,6 @@ export interface Config {
   url_base: string;
   endpoint_url: string;
   endpoints?: any;
-  specification: SpecificationsAllowed;
   footer: {
     enable: boolean;
     text: string;

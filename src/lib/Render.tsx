@@ -16,7 +16,7 @@ const Render = (
     <ConfigurationProvider config={config}>
       <SearchProvider>
         <UserProvider config={config}>
-          <App endpoints={endpoints} specification={config.specification} />
+          <App endpoints={endpoints} />
         </UserProvider>
       </SearchProvider>
     </ConfigurationProvider>,
