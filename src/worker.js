@@ -57,11 +57,19 @@ const StrategyOpenApi3 = (endpoints) => {
   };
 
   const resolveRequestBodyOpenApi3 = (method_data) => {
+    if ("$ref" in method_data) {
+      method_data = resolve_ref_recursive(method_data.$ref);
+    }
     const content_entries = Object.entries(method_data.content);
     if ("$ref" in content_entries[0][1].schema) {
       return {
         content_type: content_entries[0][0],
         body: resolve_ref_recursive(content_entries[0][1].schema.$ref),
+      };
+    } else if ("items" in content_entries[0][1].schema) {
+      return {
+        content_type: content_entries[0][0],
+        body: [resolve_ref_recursive(content_entries[0][1].schema.items.$ref)]
       };
     } else {
       return {
