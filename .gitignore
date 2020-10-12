@@ -26,3 +26,7 @@ yarn-error.log*
 
 .env
 /parsers
+
+# cypress screenshots and videos
+/cypress/screenshots
+/cypress/videos
