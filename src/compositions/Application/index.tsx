@@ -37,7 +37,7 @@ const App: React.FC<Props> = ({ endpoints }) => {
       });
       workerInstance.generateEndpoints(endpoints);
     }
-  }, [with_login, email, endpoints, workerInstance]);
+  }, [with_login, email, endpoints]);
 
   if (with_login && !email) {
     return <Login />;
