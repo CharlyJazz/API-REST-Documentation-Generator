@@ -50,13 +50,13 @@ const Text: React.FC<Props> = props => {
 
   if (type === TITLE_ENDPOINT) {
     return (
-      <h1 {...extraProps} className="Text_Title-Endpoint">
+      <h1 {...extraProps} className="Text__Title-Endpoint">
         {children}
       </h1>
     );
   } else if (type === DESCRIPTION_ENDPOINT) {
     return (
-      <p {...extraProps} className="Text__Description-Endpooint">
+      <p {...extraProps} className="Text__Description-Endpoint">
         {children}
       </p>
     );
