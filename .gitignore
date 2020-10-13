@@ -22,8 +22,6 @@ yarn-error.log*
 
 /.firebase
 
-
-/src/data/*.json
 /public/data/*.json
 
 .env

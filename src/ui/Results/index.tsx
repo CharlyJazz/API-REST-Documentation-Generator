@@ -29,7 +29,7 @@ const Results: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
     } else if (results.length) {
       setResults([]);
     }
-  }, [text]);
+  }, [data, results.length, text]);
 
   if (results.length) {
     return (
