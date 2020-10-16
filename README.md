@@ -1,6 +1,6 @@
 # Generator of API REST Documentation
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 - The point of this project is provide to the devs a structure and logical flow to create a REST API documentation without swagger or other tool. Why? I dont know. :star:. But you can use it instead install gems or packages to your backend project, Why? I dont know :star2:
@@ -91,6 +91,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://charlyjazz.com"><img src="https://avatars0.githubusercontent.com/u/12489333?v=4" width="100px;" alt=""/><br /><sub><b>Carlos Azuaje</b></sub></a><br /><a href="https://github.com/CharlyJazz/API-REST-Documentation-Generator/issues?q=author%3ACharlyJazz" title="Bug reports">🐛</a> <a href="https://github.com/CharlyJazz/API-REST-Documentation-Generator/commits?author=CharlyJazz" title="Documentation">📖</a> <a href="#ideas-CharlyJazz" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/CharlyJazz/API-REST-Documentation-Generator/commits?author=CharlyJazz" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/aradkdj"><img src="https://avatars0.githubusercontent.com/u/47002300?v=4" width="100px;" alt=""/><br /><sub><b>aradkdj</b></sub></a><br /><a href="https://github.com/CharlyJazz/API-REST-Documentation-Generator/commits?author=aradkdj" title="Code">💻</a> <a href="https://github.com/CharlyJazz/API-REST-Documentation-Generator/commits?author=aradkdj" title="Documentation">📖</a> <a href="https://github.com/CharlyJazz/API-REST-Documentation-Generator/pulls?q=is%3Apr+reviewed-by%3Aaradkdj" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
