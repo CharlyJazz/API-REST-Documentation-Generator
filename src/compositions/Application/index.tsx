@@ -37,6 +37,8 @@ const App: React.FC<Props> = ({ endpoints }) => {
       });
       workerInstance.generateEndpoints(endpoints);
     }
+    // we *don't* want to add the workerInstance to the dependency array
+    // eslint-disable-next-line
   }, [with_login, email, endpoints]);
 
   if (with_login && !email) {
