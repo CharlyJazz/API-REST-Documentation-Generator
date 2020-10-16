@@ -26,3 +26,10 @@ yarn-error.log*
 
 .env
 /parsers
+
+# cypress screenshots and videos
+/cypress/screenshots
+/cypress/videos
+
+# nyc test coverage
+/.nyc_output
