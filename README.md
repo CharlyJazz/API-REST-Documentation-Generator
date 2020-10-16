@@ -90,7 +90,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://charlyjazz.com"><img src="https://avatars0.githubusercontent.com/u/12489333?v=4" width="100px;" alt=""/><br /><sub><b>Carlos Azuaje</b></sub></a><br /><a href="https://github.com/CharlyJazz/API-REST-Documentation-Generator/issues?q=author%3ACharlyJazz" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://charlyjazz.com"><img src="https://avatars0.githubusercontent.com/u/12489333?v=4" width="100px;" alt=""/><br /><sub><b>Carlos Azuaje</b></sub></a><br /><a href="https://github.com/CharlyJazz/API-REST-Documentation-Generator/issues?q=author%3ACharlyJazz" title="Bug reports">🐛</a> <a href="https://github.com/CharlyJazz/API-REST-Documentation-Generator/commits?author=CharlyJazz" title="Documentation">📖</a> <a href="#ideas-CharlyJazz" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/CharlyJazz/API-REST-Documentation-Generator/commits?author=CharlyJazz" title="Code">💻</a></td>
   </tr>
 </table>
 
