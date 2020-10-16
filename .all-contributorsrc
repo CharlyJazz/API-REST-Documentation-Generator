@@ -27,6 +27,15 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "rich-97",
+      "name": "Ricardo Moreno",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19614614?v=4",
+      "profile": "https://rich-97.github.io",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
