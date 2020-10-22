@@ -1,8 +1,6 @@
 # Generator of API REST Documentation
 [![Build Status](https://travis-ci.org/CharlyJazz/API-REST-Documentation-Generator.svg?branch=master)](https://travis-ci.org/CharlyJazz/API-REST-Documentation-Generator)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+[![All Contributors](https://img.shields.io/github/all-contributors/CharlyJazz/API-REST-Documentation-Generator)](#contributors-)
 
 - The point of this project is provide to the devs a structure and logical flow to create a REST API documentation without swagger or other tool. Why? I dont know. :star:. But you can use it instead install gems or packages to your backend project, Why? I dont know :star2:
 
