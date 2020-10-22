@@ -4,21 +4,22 @@
   "private": true,
   "dependencies": {
     "@types/jest": "^24.0.23",
-    "@types/node": "^12.12.17",
-    "@types/react": "^16.9.16",
+    "@types/node": "^12.12.69",
+    "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.4",
     "node-sass": "^4.13.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.2.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-scripts": "3.4.4",
     "react-tiny-virtual-list": "^2.2.0",
-    "typescript": "^3.7.3",
-    "workerize-loader": "^1.1.0"
+    "typescript": "^3.9.7",
+    "workerize-loader": "^1.3.0"
   },
   "scripts": {
     "start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cypress run",
+    "ci": "server-test http-get://localhost:3000",
     "eject": "react-scripts eject",
     "storybook": "start-storybook"
   },
@@ -38,15 +39,16 @@
     ]
   },
   "devDependencies": {
-    "@cypress/code-coverage": "^3.8.1",
+    "@cypress/code-coverage": "^3.8.2",
     "@cypress/instrument-cra": "^1.3.2",
-    "@storybook/addon-actions": "^5.2.8",
-    "@storybook/addon-knobs": "^5.2.8",
+    "@storybook/addon-actions": "^5.3.21",
+    "@storybook/addon-knobs": "^5.3.21",
     "@storybook/preset-create-react-app": "^1.5.0",
-    "@storybook/react": "^5.2.8",
-    "cypress": "^5.3.0",
+    "@storybook/react": "^5.3.21",
+    "cypress": "^5.4.0",
     "eslint-plugin-chai-friendly": "^0.6.0",
     "eslint-plugin-cypress": "^2.11.2",
-    "react-docgen-typescript-loader": "^3.6.0"
+    "react-docgen-typescript-loader": "^3.6.0",
+    "start-server-and-test": "^1.11.5"
   }
 }
