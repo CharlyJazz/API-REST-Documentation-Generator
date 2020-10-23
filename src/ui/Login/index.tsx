@@ -13,7 +13,7 @@ const Login: React.FC = () => {
     event.preventDefault();
 
     try {
-      const payload = await state.loginStrategy(email, password);
+      const payload = await state.loginStrategy?.(email, password);
 
       dispatch({
         type: "LOGIN_SUCCESS",
