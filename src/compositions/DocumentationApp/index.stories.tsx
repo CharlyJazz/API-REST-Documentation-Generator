@@ -1,7 +1,7 @@
 import React from "react";
 import DocumentationApp from ".";
 import CreateDoc from "../../lib/CreateDoc";
-import config from "../../mocks/config";
+import config from "../../config";
 import { SearchProvider } from "../../providers/SearchProvider";
 
 export default {

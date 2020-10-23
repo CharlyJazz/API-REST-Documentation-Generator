@@ -2,7 +2,7 @@ import React from "react";
 import Navigation from ".";
 import { Endpoint } from "../../../types";
 import CreateDoc from "../../../lib/CreateDoc";
-import config from "../../../mocks/config";
+import config from "../../../config";
 
 export default {
   title: "Navigation",
