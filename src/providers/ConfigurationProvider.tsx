@@ -48,7 +48,7 @@ const useConfiguration = () => {
 
 interface Props {
   children: React.ReactNode;
-  config: any;
+  config: Config;
 }
 
 const ConfigurationProvider: React.FC<Props> = ({ children, config }) => {
