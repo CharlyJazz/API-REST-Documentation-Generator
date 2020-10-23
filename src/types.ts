@@ -28,9 +28,9 @@ export interface Action {
 }
 
 export interface Config {
-  loginStrategy: (email: string, password: string) => any;
-  logoutStrategy: () => void;
-  getUserStrategy: () => any;
+  loginStrategy?: (email: string, password: string) => any;
+  logoutStrategy?: () => void;
+  getUserStrategy?: () => any;
   with_login: boolean;
   url_base: string;
   endpoint_url: string;
