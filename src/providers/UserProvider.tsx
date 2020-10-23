@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Action } from "../types";
+import { Action, Config } from "../types";
 
 interface InitialState {
   email: string;
@@ -43,16 +43,19 @@ const useUser = () => {
 
 interface Props {
   children: React.ReactNode;
-  config: any;
+  config: Config;
 }
 
 const UserProvider: React.FC<Props> = ({ children, config }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const value = { state, dispatch };
   useEffect(() => {
-    const user = config.getUserStrategy();
-    if (user && "email" in user)
-      dispatch({ type: "GET_LOGGED_USER", payload: user });
+    if (config && config.with_login && config.getUserStrategy) {
+      const user = config.getUserStrategy();
+      if (user && "email" in user) {
+        dispatch({ type: "GET_LOGGED_USER", payload: user });
+      }
+    }
   }, [config]);
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
