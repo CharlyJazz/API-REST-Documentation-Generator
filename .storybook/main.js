@@ -1,6 +1,6 @@
 module.exports = [
   {
-    name: '@storybook/preset-create-react-app',
+    name: "@storybook/preset-create-react-app",
     options: {
       tsDocgenLoaderOptions: {},
     },

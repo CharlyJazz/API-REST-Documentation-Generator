@@ -1,4 +1,4 @@
-import { Endpoint } from '../types'
+import { Endpoint } from "../types";
 
 const generateData = (endpoints: any): Endpoint[] => {
   for (let i = 0; i < endpoints.length; i++) {
@@ -11,6 +11,5 @@ const generateData = (endpoints: any): Endpoint[] => {
   }
   return endpoints;
 };
-
 
 export default generateData;

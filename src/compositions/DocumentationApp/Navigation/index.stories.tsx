@@ -6,7 +6,7 @@ import config from "../../../config";
 
 export default {
   title: "Navigation",
-  component: Navigation
+  component: Navigation,
 };
 
 export const simpleExample: React.FC = () => {

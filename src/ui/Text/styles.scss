@@ -1,9 +1,11 @@
-h1, h2, p {
+h1,
+h2,
+p {
   font-family: Roboto, Arial;
   color: #3b3b3b;
 
   > span {
-    transition: color .2s;
+    transition: color 0.2s;
   }
 }
 

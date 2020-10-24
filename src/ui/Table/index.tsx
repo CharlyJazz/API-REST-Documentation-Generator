@@ -11,7 +11,7 @@ interface Props {
 const Table: React.FC<Props> = (props) => {
   const { header_cols, rows } = props;
   return (
-    <table className='Table'>
+    <table className="Table">
       <thead>
         <tr>
           {header_cols.map((col, key) => {

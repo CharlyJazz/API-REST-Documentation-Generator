@@ -12,7 +12,7 @@ const Results: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
   const [results, setResults] = useState<Endpoint[]>([]);
   const {
     state: { text, section_id_active },
-    dispatch
+    dispatch,
   } = useContext(SearchContext);
 
   useEffect(() => {
@@ -35,14 +35,14 @@ const Results: React.FC<{ data?: Endpoint[] }> = ({ data }) => {
     return (
       <div className="Results">
         <ul tabIndex={0}>
-          {results.map(item => (
+          {results.map((item) => (
             <li key={item.ID_SECTION}>
               <Text
                 type={DESCRIPTION_ENDPOINT}
                 onClick={() =>
                   dispatch({
                     type: "SET_ID_SECTION",
-                    payload: { value: item.ID_SECTION }
+                    payload: { value: item.ID_SECTION },
                   })
                 }
                 {...(section_id_active === item.ID_SECTION

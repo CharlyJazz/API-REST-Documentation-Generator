@@ -3,7 +3,7 @@ import EndpointSection from ".";
 
 export default {
   title: "Endpoint Section",
-  component: EndpointSection
+  component: EndpointSection,
 };
 
 export const simpleExample: React.FC = () => (
