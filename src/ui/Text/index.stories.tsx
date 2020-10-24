@@ -3,12 +3,12 @@ import Text, {
   TITLE_ENDPOINT,
   DESCRIPTION_ENDPOINT,
   TITLE_METHOD_SECTION,
-  DESCRIPTION_METHOD_SECTION
+  DESCRIPTION_METHOD_SECTION,
 } from ".";
 
 export default {
   title: "Text",
-  component: Text
+  component: Text,
 };
 
 export const aTitleForAllTheSection: React.FC = () => (

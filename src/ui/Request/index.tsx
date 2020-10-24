@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Request: React.FC<Props> = ({ request }) => {
-  console.log(request)
+  console.log(request);
   return request && "content_type" in request ? (
     <>
       <Spacing />

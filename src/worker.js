@@ -49,9 +49,7 @@ const StrategyOpenApi3 = (endpoints) => {
       "items" in obj &&
       "$ref" in obj.items
     ) {
-      obj.items = [
-        resolve_ref_recursive(obj.items.$ref),
-      ];
+      obj.items = [resolve_ref_recursive(obj.items.$ref)];
     }
     return obj;
   };
@@ -69,7 +67,7 @@ const StrategyOpenApi3 = (endpoints) => {
     } else if ("items" in content_entries[0][1].schema) {
       return {
         content_type: content_entries[0][0],
-        body: [resolve_ref_recursive(content_entries[0][1].schema.items.$ref)]
+        body: [resolve_ref_recursive(content_entries[0][1].schema.items.$ref)],
       };
     } else {
       return {
@@ -192,7 +190,7 @@ export const generateEndpoints = (data) => {
   } else if ("openapi" in data && /^3.0.[0-3]$/.test(data.openapi)) {
     data = StrategyOpenApi3(data);
   } else {
-    console.error("Specification not yet supported")
+    console.error("Specification not yet supported");
   }
   postMessage({ endpoint_message: true, endpoints: data });
 };

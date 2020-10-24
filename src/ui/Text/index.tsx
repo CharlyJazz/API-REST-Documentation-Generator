@@ -17,7 +17,7 @@ export const TEXT_SMALL = "TEXT_SMALL";
 
 // Text component to use in all text use cases
 // Sometime we want render <br/> because the text have \n (OA3)
-const Text: React.FC<Props> = props => {
+const Text: React.FC<Props> = (props) => {
   const { type, onClick, style, render_breaklines } = props;
 
   let { children } = { ...props };
@@ -72,7 +72,6 @@ const Text: React.FC<Props> = props => {
         {children}
       </p>
     );
-
   } else if (type === TEXT_SMALL) {
     return (
       <p {...extraProps} className="Text__Small">

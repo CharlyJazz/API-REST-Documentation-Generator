@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import "./styles.scss";
 
-const ResponseExample:React.FC<{ data: any }> = ({ data }) => {
+const ResponseExample: React.FC<{ data: any }> = ({ data }) => {
   const json = JSON.stringify(data, null, 2);
 
   return (

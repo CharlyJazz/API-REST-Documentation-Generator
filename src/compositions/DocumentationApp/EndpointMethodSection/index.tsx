@@ -3,7 +3,7 @@ import RequestURL from "../../../ui/RequestURL";
 import { MethodProps } from "../../../types";
 import Text, {
   TITLE_METHOD_SECTION,
-  DESCRIPTION_METHOD_SECTION
+  DESCRIPTION_METHOD_SECTION,
 } from "../../../ui/Text";
 import ImportantNote from "../../../ui/ImportantNote";
 import { SearchContext } from "../../../providers/SearchProvider";
@@ -21,7 +21,7 @@ import "./styles.scss";
    4. Note text
    5. Query Params in Table
 */
-const EndpointMethodSection: React.FC<MethodProps> = props => {
+const EndpointMethodSection: React.FC<MethodProps> = (props) => {
   const {
     description,
     method,
@@ -30,10 +30,10 @@ const EndpointMethodSection: React.FC<MethodProps> = props => {
     url,
     note,
     request,
-    ID_SECTION
+    ID_SECTION,
   } = props;
   const {
-    state: { sub_section_id_active }
+    state: { sub_section_id_active },
   } = useContext(SearchContext);
   return (
     <div className="EndpointMethodSection" id={ID_SECTION}>
@@ -43,7 +43,7 @@ const EndpointMethodSection: React.FC<MethodProps> = props => {
             color:
               ID_SECTION === sub_section_id_active
                 ? "rgb(0, 188, 212)"
-                : "inherit"
+                : "inherit",
           }}
         >
           {title}

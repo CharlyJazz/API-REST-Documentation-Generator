@@ -1,0 +1,7 @@
+# ignore artifacts
+.nyc_output/
+build
+coverage
+package-lock.json
+
+/public/data/*.json

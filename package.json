@@ -20,6 +20,8 @@
     "build": "react-scripts build",
     "test": "cypress run",
     "ci": "server-test http-get://localhost:3000",
+    "pretty:check": "prettier -c .",
+    "pretty:write": "prettier -w .",
     "eject": "react-scripts eject",
     "storybook": "start-storybook"
   },
@@ -48,6 +50,7 @@
     "cypress": "^5.4.0",
     "eslint-plugin-chai-friendly": "^0.6.0",
     "eslint-plugin-cypress": "^2.11.2",
+    "prettier": "2.1.2",
     "react-docgen-typescript-loader": "^3.6.0",
     "start-server-and-test": "^1.11.5"
   }

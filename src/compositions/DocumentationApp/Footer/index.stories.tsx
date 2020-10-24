@@ -3,9 +3,7 @@ import Footer from ".";
 
 export default {
   title: "Footer",
-  component: Footer
+  component: Footer,
 };
 
-export const simpleExample: React.FC = () => (
-  <Footer/>
-);
+export const simpleExample: React.FC = () => <Footer />;

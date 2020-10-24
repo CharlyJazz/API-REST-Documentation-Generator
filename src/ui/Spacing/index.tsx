@@ -5,7 +5,7 @@ const Spacing: React.FC<{ px?: number }> = ({ px }) => (
 );
 
 Spacing.defaultProps = {
-  px: 40
+  px: 40,
 };
 
 export default Spacing;

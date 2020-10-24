@@ -17,7 +17,7 @@ const Login: React.FC = () => {
 
       dispatch({
         type: "LOGIN_SUCCESS",
-        payload
+        payload,
       });
     } catch (error) {
       alert("Invalid credentials");
@@ -36,7 +36,7 @@ const Login: React.FC = () => {
             required
             placeholder="hello@domain.com"
             value={email}
-            onChange={event => setEmail(event.target.value)}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
         <div className="Login__form-group">
@@ -48,7 +48,7 @@ const Login: React.FC = () => {
             id="password"
             name="password"
             value={password}
-            onChange={event => setPassword(event.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </div>
         <button className="Login__form-button" type="submit">

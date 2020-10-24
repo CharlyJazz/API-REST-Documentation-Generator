@@ -7,16 +7,15 @@ import "./styles.scss";
 // from the configuration provider
 const Footer: React.FC = () => {
   const {
-    state: { footer: { text, enable } }
+    state: {
+      footer: { text, enable },
+    },
   } = useContext(ConfigurationContext);
   return enable ? (
     <footer className="Footer">
-      <Text type={DESCRIPTION_METHOD_SECTION}>
-        {text}
-      </Text>
+      <Text type={DESCRIPTION_METHOD_SECTION}>{text}</Text>
     </footer>
   ) : null;
 };
 
-
-export default Footer
+export default Footer;
